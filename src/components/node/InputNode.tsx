@@ -1,22 +1,37 @@
-import { Handle, Position } from "reactflow"
+import { Handle, NodeProps, Position, useReactFlow, useStoreApi } from "reactflow"
 
-type Props = {
-  data: {
-    name: string
-    description: string
-  }
+export type InputNodeProps = {
+  name: string
+  enabled: boolean
 }
 
-export default function InputNode(props: Props) {
+export default function InputNode(props: NodeProps<InputNodeProps>) {
+  const flow = useReactFlow()
+  const store = useStoreApi()
   return (
-    <div className={"p-4 bg-white border rounded"}>
-      <Handle type="target" position={Position.Top} />
+    <div className={"p-4 bg-white rounded"}>
       <div>
-        <h2>{props.data.name}</h2>
-        <p>{props.data.description}</p>
+        <h2 className={"text-lg"}>{props.data.name}</h2>
+        <button
+          className={"bg-primary-600 text-white px-2 rounded"}
+          onClick={() => {
+            flow.setNodes(
+              Array.from(store.getState().nodeInternals.values()).map((node) => {
+                if (node.id === props.id) {
+                  node.data = {
+                    ...node.data,
+                    enabled: !node.data.enabled,
+                  }
+                }
+                return node
+              })
+            )
+          }}
+        >
+          {props.data.enabled ? "On" : "Off"}
+        </button>
       </div>
-      <Handle type="source" position={Position.Bottom} id="a" />
-      <Handle type="source" position={Position.Bottom} id="b" className={"w-4 bg-secondary-600"} style={{ left: 10 }} />
+      <Handle type="source" position={Position.Right} id="a" className={"w-4 h-4 rounded bg-secondary-600"} />
     </div>
   )
 }

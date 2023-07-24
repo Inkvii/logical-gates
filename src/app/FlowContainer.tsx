@@ -11,7 +11,7 @@ import ReactFlow, {
   useEdgesState,
   useNodesState,
 } from "reactflow"
-import InputNode from "components/node/InputNode"
+import InputNode, { InputNodeProps } from "components/node/InputNode"
 
 const nodeTypes: NodeTypes = { input: InputNode }
 
@@ -22,8 +22,8 @@ const initialNodes: Node[] = [
     id: "3",
     position: { x: 100, y: 200 },
     type: "input",
-    data: { label: "3", name: "My name", description: "Hello there" },
-  },
+    data: { name: "My name", enabled: false },
+  } satisfies Node<InputNodeProps>,
 ]
 
 const initialEdges = [{ id: "e1-2", source: "1", target: "2" }]
