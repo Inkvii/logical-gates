@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin")
+const colors = require("tailwindcss/colors")
 
 module.exports = {
   content: [
@@ -7,7 +8,12 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.blue,
+        secondary: colors.emerald,
+      },
+    },
   },
   plugins: [
     require("@tailwindcss/forms"),
@@ -17,7 +23,8 @@ module.exports = {
     }),
     plugin(function({ addUtilities }) {
       const utils = {
-        ".mobile-height-screen": { height: "100dvh" },
+        ".h-dynamic-screen": { height: "100dvh" },
+        ".h-dynamic-80": { height: "80dvh" },
       }
       addUtilities(utils)
     }),
