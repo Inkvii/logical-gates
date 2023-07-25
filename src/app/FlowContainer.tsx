@@ -61,7 +61,6 @@ const initialEdges: Edge[] = [
     target: "5",
     sourceHandle: "a",
     targetHandle: "a",
-    animated: true,
   },
 ]
 

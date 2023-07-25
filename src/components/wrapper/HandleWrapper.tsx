@@ -20,7 +20,10 @@ export default function HandleWrapper(props: { className?: string; type: HandleT
         type={props.type}
         position={props.type === "source" ? Position.Right : Position.Left}
         id={id}
-        className={twMerge("w-3 h-3 rounded", props.type === "source" ? "bg-secondary-600" : "bg-primary-600")}
+        className={twMerge(
+          "w-3 h-3 rounded-full border",
+          props.type === "source" ? "bg-secondary-600 border-secondary-400" : "bg-primary-600 border-primary-400"
+        )}
         style={{ top: `${(100 / (props.count + 1)) * (i + 1)}%` }}
       />
     )

@@ -11,15 +11,18 @@ export default function AndNode(props: NodeProps<AndNodeProps>) {
   const edges = useEdges()
 
   const isConditionMet: boolean = useMemo(() => {
-    return edges
-      .filter((edge) => edge.target === props.id)
-      .every((edge) => {
+    const filtered = edges.filter((edge) => edge.target === props.id)
+
+    return (
+      filtered.length > 0 &&
+      filtered.every((edge) => {
         return edge.animated
       })
+    )
   }, [props.id, edges])
 
   return (
-    <NodeWrapper selected={props.selected}>
+    <NodeWrapper selected={props.selected} nodeId={props.id}>
       <HandleWrapper type={"source"} count={1} />
       <div>
         <p>[AND]</p>
