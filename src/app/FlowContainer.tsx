@@ -4,10 +4,13 @@ import ReactFlow, {
   addEdge,
   Background,
   BackgroundVariant,
+  Connection,
   Controls,
+  Edge,
   MiniMap,
   Node,
   NodeTypes,
+  OnConnect,
   useEdgesState,
   useNodesState,
 } from "reactflow"
@@ -26,15 +29,15 @@ const initialNodes: Node[] = [
   } satisfies Node<InputNodeProps>,
 ]
 
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }]
+const initialEdges: Edge[] = [{ id: "e1-2", source: "1", target: "2", animated: true }]
 
 export default function FlowContainer() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
 
-  const onConnect = useCallback(
-    (params: any) => {
-      setEdges((eds) => addEdge(params, eds))
+  const onConnect: OnConnect = useCallback(
+    (connection: Connection) => {
+      setEdges((edges) => addEdge(connection, edges))
     },
     [setEdges]
   )
