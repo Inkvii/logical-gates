@@ -1,16 +1,17 @@
 import { Handle, NodeProps, Position, useReactFlow, useStoreApi } from "reactflow"
 import { produce } from "immer"
+import { twMerge } from "tailwind-merge"
 
-export type InputNodeProps = {
+export type GeneratorNodeProps = {
   name: string
   enabled: boolean
 }
 
-export default function InputNode(props: NodeProps<InputNodeProps>) {
+export default function GeneratorNode(props: NodeProps<GeneratorNodeProps>) {
   const flow = useReactFlow()
   const store = useStoreApi()
   return (
-    <div className={"p-4 bg-white rounded"}>
+    <div className={twMerge("p-4 bg-white rounded border", props.selected && "border-primary-600")}>
       <div>
         <h2 className={"text-lg"}>{props.data.name}</h2>
         <button
@@ -23,7 +24,7 @@ export default function InputNode(props: NodeProps<InputNodeProps>) {
                   return node
                 }
 
-                node.data = produce<InputNodeProps>(node.data, (draft) => {
+                node.data = produce<GeneratorNodeProps>(node.data, (draft) => {
                   draft.enabled = invertedEnabledState
                 })
                 return node

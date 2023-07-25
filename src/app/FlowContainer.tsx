@@ -14,9 +14,13 @@ import ReactFlow, {
   useEdgesState,
   useNodesState,
 } from "reactflow"
-import InputNode, { InputNodeProps } from "components/node/InputNode"
+import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode"
+import OrNode, { OrNodeProps } from "components/node/OrNode"
 
-const nodeTypes: NodeTypes = { input: InputNode }
+const nodeTypes: NodeTypes = {
+  generator: GeneratorNode,
+  or: OrNode,
+}
 
 const initialNodes: Node[] = [
   { id: "1", position: { x: 50, y: 50 }, data: { label: "First node (1)" } },
@@ -24,9 +28,23 @@ const initialNodes: Node[] = [
   {
     id: "3",
     position: { x: 100, y: 200 },
-    type: "input",
-    data: { name: "My name", enabled: false },
-  } satisfies Node<InputNodeProps>,
+    type: "generator",
+    data: { name: "A input", enabled: false },
+  } satisfies Node<GeneratorNodeProps>,
+  {
+    id: "4",
+    position: { x: 100, y: 400 },
+    type: "generator",
+    data: { name: "B Input", enabled: false },
+  } satisfies Node<GeneratorNodeProps>,
+  {
+    id: "5",
+    position: { x: 300, y: 300 },
+    type: "or",
+    data: {
+      name: "OR gate",
+    },
+  } satisfies Node<OrNodeProps>,
 ]
 
 const initialEdges: Edge[] = [{ id: "e1-2", source: "1", target: "2", animated: true }]
