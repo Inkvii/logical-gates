@@ -16,10 +16,12 @@ import ReactFlow, {
 } from "reactflow"
 import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode"
 import OrNode, { OrNodeProps } from "components/node/OrNode"
+import AndNode from "components/node/AndNode"
 
 const nodeTypes: NodeTypes = {
   generator: GeneratorNode,
   or: OrNode,
+  and: AndNode,
 }
 
 const initialNodes: Node[] = [
@@ -43,6 +45,14 @@ const initialNodes: Node[] = [
     type: "or",
     data: {
       name: "OR gate",
+    },
+  } satisfies Node<OrNodeProps>,
+  {
+    id: "6",
+    position: { x: 300, y: 150 },
+    type: "and",
+    data: {
+      name: "AND gate",
     },
   } satisfies Node<OrNodeProps>,
 ]
