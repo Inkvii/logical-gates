@@ -25,8 +25,6 @@ const nodeTypes: NodeTypes = {
 }
 
 const initialNodes: Node[] = [
-  { id: "1", position: { x: 50, y: 50 }, data: { label: "First node (1)" } },
-  { id: "2", position: { x: 150, y: 100 }, data: { label: "Second node (2)" } },
   {
     id: "3",
     position: { x: 100, y: 200 },

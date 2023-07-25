@@ -4,6 +4,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.react-flow__node {
-	@apply rounded
-}

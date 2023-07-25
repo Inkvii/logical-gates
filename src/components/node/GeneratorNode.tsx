@@ -1,6 +1,7 @@
-import { Handle, NodeProps, Position, useReactFlow, useStoreApi } from "reactflow"
+import { NodeProps, useReactFlow, useStoreApi } from "reactflow"
 import { produce } from "immer"
-import { twMerge } from "tailwind-merge"
+import NodeWrapper from "components/wrapper/NodeWrapper"
+import HandleWrapper from "components/wrapper/HandleWrapper"
 
 export type GeneratorNodeProps = {
   name: string
@@ -11,7 +12,7 @@ export default function GeneratorNode(props: NodeProps<GeneratorNodeProps>) {
   const flow = useReactFlow()
   const store = useStoreApi()
   return (
-    <div className={twMerge("p-4 bg-white rounded border", props.selected && "border-primary-600")}>
+    <NodeWrapper selected={props.selected}>
       <div>
         <h2 className={"text-lg"}>{props.data.name}</h2>
         <button
@@ -43,7 +44,7 @@ export default function GeneratorNode(props: NodeProps<GeneratorNodeProps>) {
           {props.data.enabled ? "On" : "Off"}
         </button>
       </div>
-      <Handle type="source" position={Position.Right} id="a" className={"w-4 h-4 rounded bg-secondary-600"} />
-    </div>
+      <HandleWrapper type={"source"} count={1} />
+    </NodeWrapper>
   )
 }
