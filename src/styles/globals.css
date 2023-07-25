@@ -4,3 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-flow__controls {
+	@apply bg-white rounded
+}
+
+.react-flow__attribution {
+	@apply bg-neutral-800
+}
+
+.react-flow__edge-path {
+	@apply stroke-rose-500
+}

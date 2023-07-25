@@ -7,7 +7,6 @@ import ReactFlow, {
   Connection,
   Controls,
   Edge,
-  MiniMap,
   Node,
   NodeTypes,
   OnConnect,
@@ -39,7 +38,7 @@ const initialNodes: Node[] = [
   } satisfies Node<GeneratorNodeProps>,
   {
     id: "5",
-    position: { x: 300, y: 300 },
+    position: { x: 500, y: 300 },
     type: "or",
     data: {
       name: "OR gate",
@@ -47,7 +46,7 @@ const initialNodes: Node[] = [
   } satisfies Node<OrNodeProps>,
   {
     id: "6",
-    position: { x: 300, y: 150 },
+    position: { x: 500, y: 150 },
     type: "and",
     data: {
       name: "AND gate",
@@ -55,12 +54,20 @@ const initialNodes: Node[] = [
   } satisfies Node<OrNodeProps>,
 ]
 
-const initialEdges: Edge[] = [{ id: "e1-2", source: "1", target: "2", animated: true }]
+const initialEdges: Edge[] = [
+  {
+    id: "e3a-5a",
+    source: "3",
+    target: "5",
+    sourceHandle: "a",
+    targetHandle: "a",
+    animated: true,
+  },
+]
 
 export default function FlowContainer() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
-
   const onConnect: OnConnect = useCallback(
     (connection: Connection) => {
       setEdges((edges) => addEdge(connection, edges))
@@ -69,7 +76,7 @@ export default function FlowContainer() {
   )
 
   return (
-    <div className={"w-full h-dynamic-80"}>
+    <div className={"w-full h-dynamic-screen"}>
       <ReactFlow
         nodeTypes={nodeTypes}
         nodes={nodes}
@@ -78,9 +85,8 @@ export default function FlowContainer() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
       >
-        <Controls />
-        <MiniMap />
-        <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+        <Controls position={"bottom-right"} color={"white"} />
+        <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
       </ReactFlow>
     </div>
   )
