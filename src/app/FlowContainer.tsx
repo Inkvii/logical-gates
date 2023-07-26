@@ -15,7 +15,7 @@ import ReactFlow, {
 } from "reactflow"
 import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode"
 import OrNode, { OrNodeProps } from "components/node/OrNode"
-import AndNode from "components/node/AndNode"
+import AndNode, { AndNodeProps } from "components/node/AndNode"
 
 const nodeTypes: NodeTypes = {
   generator: GeneratorNode,
@@ -51,7 +51,7 @@ const initialNodes: Node[] = [
     data: {
       name: "AND gate",
     },
-  } satisfies Node<OrNodeProps>,
+  } satisfies Node<AndNodeProps>,
 ]
 
 const initialEdges: Edge[] = [

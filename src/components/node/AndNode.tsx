@@ -5,21 +5,23 @@ import HandleWrapper from "components/wrapper/HandleWrapper"
 
 export type AndNodeProps = {
   name: string
+  targetCount?: number
 }
 
 export default function AndNode(props: NodeProps<AndNodeProps>) {
   const edges = useEdges()
+  const { targetCount = 2 } = props.data
 
   const isConditionMet: boolean = useMemo(() => {
     const filtered = edges.filter((edge) => edge.target === props.id)
 
     return (
-      filtered.length > 0 &&
+      filtered.length === targetCount &&
       filtered.every((edge) => {
         return edge.animated
       })
     )
-  }, [props.id, edges])
+  }, [props.id, edges, targetCount])
 
   return (
     <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id}>
@@ -29,7 +31,7 @@ export default function AndNode(props: NodeProps<AndNodeProps>) {
         <h2 className={"text-lg"}>{props.data.name}</h2>
         <p>{isConditionMet ? "Power is ON" : "Power is OFF"}</p>
       </div>
-      <HandleWrapper type={"target"} count={2} />
+      <HandleWrapper type={"target"} count={targetCount} />
     </NodeWrapper>
   )
 }
