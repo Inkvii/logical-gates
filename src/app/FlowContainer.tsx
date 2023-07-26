@@ -61,6 +61,7 @@ const initialNodes: Node[] = [
     type: "not",
     data: {
       name: "NOT gate",
+      enabled: false,
     },
   } satisfies Node<NotNodeProps>,
 ]
