@@ -16,11 +16,13 @@ import ReactFlow, {
 import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode"
 import OrNode, { OrNodeProps } from "components/node/OrNode"
 import AndNode, { AndNodeProps } from "components/node/AndNode"
+import NotNode, { NotNodeProps } from "components/node/NotNode"
 
 const nodeTypes: NodeTypes = {
   generator: GeneratorNode,
   or: OrNode,
   and: AndNode,
+  not: NotNode,
 }
 
 const initialNodes: Node[] = [
@@ -50,8 +52,17 @@ const initialNodes: Node[] = [
     type: "and",
     data: {
       name: "AND gate",
+      enabled: false,
     },
   } satisfies Node<AndNodeProps>,
+  {
+    id: "7",
+    position: { x: 900, y: 150 },
+    type: "not",
+    data: {
+      name: "NOT gate",
+    },
+  } satisfies Node<NotNodeProps>,
 ]
 
 const initialEdges: Edge[] = [

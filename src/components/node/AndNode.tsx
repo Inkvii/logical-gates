@@ -1,15 +1,20 @@
-import { NodeProps, useEdges } from "reactflow"
-import { useMemo } from "react"
+import { NodeProps, useEdges, useReactFlow, useStoreApi } from "reactflow"
+import { useEffect, useMemo } from "react"
 import NodeWrapper from "components/wrapper/NodeWrapper"
 import HandleWrapper from "components/wrapper/HandleWrapper"
+import { produce } from "immer"
 
 export type AndNodeProps = {
   name: string
+  enabled: boolean
   targetCount?: number
 }
 
 export default function AndNode(props: NodeProps<AndNodeProps>) {
   const edges = useEdges()
+  const flow = useReactFlow()
+  const store = useStoreApi()
+
   const { targetCount = 2 } = props.data
 
   const isConditionMet: boolean = useMemo(() => {
@@ -22,6 +27,30 @@ export default function AndNode(props: NodeProps<AndNodeProps>) {
       })
     )
   }, [props.id, edges, targetCount])
+
+  useEffect(() => {
+    const result = isConditionMet
+    flow.setNodes(
+      Array.from(store.getState().nodeInternals.values()).map((node) => {
+        if (node.id !== props.id) {
+          return node
+        }
+
+        node.data = produce<AndNodeProps>(node.data, (draft) => {
+          draft.enabled = result
+        })
+        return node
+      })
+    )
+    flow.setEdges(
+      store.getState().edges.map((edge) => {
+        if (edge.source !== props.id) return edge
+
+        edge.animated = result
+        return edge
+      })
+    )
+  }, [isConditionMet])
 
   return (
     <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id}>
