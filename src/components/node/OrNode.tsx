@@ -19,7 +19,7 @@ export default function OrNode(props: NodeProps<OrNodeProps>) {
   }, [props.id, edges])
 
   return (
-    <NodeWrapper selected={props.selected} nodeId={props.id}>
+    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id}>
       <HandleWrapper type={"source"} count={1} />
       <div>
         <p>[OR]</p>

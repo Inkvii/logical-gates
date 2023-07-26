@@ -12,7 +12,7 @@ export default function GeneratorNode(props: NodeProps<GeneratorNodeProps>) {
   const flow = useReactFlow()
   const store = useStoreApi()
   return (
-    <NodeWrapper selected={props.selected} nodeId={props.id}>
+    <NodeWrapper enabled={props.data.enabled} selected={props.selected} nodeId={props.id}>
       <div>
         <h2 className={"text-lg"}>{props.data.name}</h2>
         <button
