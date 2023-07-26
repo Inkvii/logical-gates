@@ -4,13 +4,10 @@ import { twMerge } from "tailwind-merge"
 import { useCallback } from "react"
 
 export default function HandleWrapper(props: { className?: string; type: HandleType; count: number }) {
-  const idGenerator = useCallback(
-    (index: number) => {
-      const ids = "abcdefghijklmnopqrstuvwxyz".split("")
-      return convertDecimalToBase(index++, ids)
-    },
-    [props]
-  )
+  const idGenerator = useCallback((index: number) => {
+    const ids = "abcdefghijklmnopqrstuvwxyz".split("")
+    return convertDecimalToBase(index++, ids)
+  }, [])
 
   return Array.from(Array(props.count).keys()).map((i) => {
     const id = idGenerator(i)
