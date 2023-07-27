@@ -18,6 +18,7 @@ import OrNode, { OrNodeProps } from "components/node/OrNode"
 import AndNode, { AndNodeProps } from "components/node/AndNode"
 import NotNode, { NotNodeProps } from "components/node/NotNode"
 import { produce } from "immer"
+import { createEdgeFromConnection } from "util/edgeUtils"
 
 const nodeTypes: NodeTypes = {
   generator: GeneratorNode,
@@ -81,22 +82,11 @@ const initialEdges: Edge[] = [
 export default function FlowContainer() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
+
   const onConnect: OnConnect = useCallback(
     (connection: Connection) => {
-      if (!connection.source || !connection.target) return
-      const node = nodes.find((n) => n.id === connection.source)
-
-      if (!node) return
-
-      const edge: Edge = {
-        id: `e${connection.source}${connection.sourceHandle}-${connection.target}${connection.targetHandle}`,
-        source: connection.source,
-        sourceHandle: connection.sourceHandle,
-        target: connection.target,
-        targetHandle: connection.targetHandle,
-        animated: node.data.enabled,
-      }
-      setEdges((edges) => addEdge(edge, edges))
+      const edge: Edge = createEdgeFromConnection(connection, nodes)
+      setEdges((prev) => addEdge(edge, prev))
     },
     [nodes, setEdges]
   )
@@ -104,19 +94,7 @@ export default function FlowContainer() {
   // gets called after end of edge gets dragged to another source or target
   const onEdgeUpdate = useCallback(
     (oldEdge: Edge, connection: Connection) => {
-      if (!connection.source || !connection.target) return
-      const node = nodes.find((n) => n.id === connection.source)
-
-      if (!node) return
-
-      const edge: Edge = {
-        id: `e${connection.source}${connection.sourceHandle}-${connection.target}${connection.targetHandle}`,
-        source: connection.source,
-        sourceHandle: connection.sourceHandle,
-        target: connection.target,
-        targetHandle: connection.targetHandle,
-        animated: node.data.enabled,
-      }
+      const edge: Edge = createEdgeFromConnection(connection, nodes)
 
       setEdges((prev) =>
         produce(prev, (draft) => {
