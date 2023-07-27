@@ -3,11 +3,9 @@ import { useMemo } from "react"
 import NodeWrapper from "components/wrapper/NodeWrapper"
 import HandleWrapper from "components/wrapper/HandleWrapper"
 import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
+import { AbstractNodeProps } from "components/node/AbstractNodeProps"
 
-export type NotNodeProps = {
-  name: string
-  enabled: boolean
-}
+export type NotNodeProps = AbstractNodeProps
 
 export default function NotNode(props: NodeProps<NotNodeProps>) {
   const edges = useEdges()
@@ -27,12 +25,10 @@ export default function NotNode(props: NodeProps<NotNodeProps>) {
 
 
   return (
-    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id}>
+    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"Invertor"}>
       <HandleWrapper type={"source"} count={1} />
       <div>
-        <p>[NOT]</p>
         <h2 className={"text-lg"}>{props.data.name}</h2>
-        <p>{isConditionMet ? "Power is ON" : "Power is OFF"}</p>
       </div>
       <HandleWrapper type={"target"} count={1} />
     </NodeWrapper>

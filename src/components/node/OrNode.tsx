@@ -3,10 +3,9 @@ import { useMemo } from "react"
 import NodeWrapper from "components/wrapper/NodeWrapper"
 import HandleWrapper from "components/wrapper/HandleWrapper"
 import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
+import { AbstractNodeProps } from "components/node/AbstractNodeProps"
 
-export type OrNodeProps = {
-  name: string
-}
+export type OrNodeProps = AbstractNodeProps
 
 export default function OrNode(props: NodeProps<OrNodeProps>) {
   const edges = useEdges()
@@ -23,12 +22,10 @@ export default function OrNode(props: NodeProps<OrNodeProps>) {
 
 
   return (
-    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id}>
+    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"OR gate"}>
       <HandleWrapper type={"source"} count={1} />
       <div>
-        <p>[OR]</p>
         <h2 className={"text-lg"}>{props.data.name}</h2>
-        <p>{isConditionMet ? "Power is ON" : "Power is OFF"}</p>
       </div>
 
       <HandleWrapper type={"target"} count={2} />

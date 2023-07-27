@@ -3,10 +3,9 @@ import { useMemo } from "react"
 import NodeWrapper from "components/wrapper/NodeWrapper"
 import HandleWrapper from "components/wrapper/HandleWrapper"
 import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
+import { AbstractNodeProps } from "components/node/AbstractNodeProps"
 
-export type AndNodeProps = {
-  name: string
-  enabled: boolean
+export type AndNodeProps = AbstractNodeProps & {
   targetCount?: number
 }
 
@@ -30,12 +29,10 @@ export default function AndNode(props: NodeProps<AndNodeProps>) {
 
 
   return (
-    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id}>
+    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"AND gate"}>
       <HandleWrapper type={"source"} count={1} />
       <div>
-        <p>[AND]</p>
         <h2 className={"text-lg"}>{props.data.name}</h2>
-        <p>{isConditionMet ? "Power is ON" : "Power is OFF"}</p>
       </div>
       <HandleWrapper type={"target"} count={targetCount} />
     </NodeWrapper>

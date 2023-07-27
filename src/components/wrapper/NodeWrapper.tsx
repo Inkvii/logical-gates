@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import { twMerge } from "tailwind-merge"
 
 export default function NodeWrapper(props: {
+  name: string
   selected: boolean
   enabled: boolean
   nodeId: string
@@ -19,12 +20,18 @@ export default function NodeWrapper(props: {
       )}
     >
       <div
-        className={twMerge(
-          "p-4 bg-gradient-to-br from-neutral-900 to-neutral-800 rounded border text-white min-w-[200px]"
-        )}
+        className={twMerge("bg-gradient-to-br from-neutral-900 to-neutral-800 rounded border text-white min-w-[200px]")}
       >
-        <p className={"text-xs"}>ID: {props.nodeId}</p>
-        {props.children}
+        ,{" "}
+        <div
+          className={
+            "flex justify-between gap-4 items-center px-2 py-1 bg-gradient-to-b from-neutral-900 to-neutral-800 rounded-t"
+          }
+        >
+          <p className={"text-xs"}>ID: {props.nodeId}</p>
+          <p className={"text-xs font-semibold"}>{props.name}</p>
+        </div>
+        <div className={"px-4 pb-4 pt-2"}>{props.children}</div>
       </div>
     </div>
   )

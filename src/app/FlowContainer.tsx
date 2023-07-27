@@ -10,6 +10,7 @@ import ReactFlow, {
   Node,
   NodeTypes,
   OnConnect,
+  updateEdge,
   useEdgesState,
   useNodesState,
 } from "reactflow"
@@ -44,6 +45,7 @@ const initialNodes: Node[] = [
     type: "or",
     data: {
       name: "OR gate",
+      enabled: false,
     },
   } satisfies Node<OrNodeProps>,
   {
@@ -99,6 +101,12 @@ export default function FlowContainer() {
     [nodes, setEdges]
   )
 
+  // gets called after end of edge gets dragged to another source or target
+  const onEdgeUpdate = useCallback(
+    (oldEdge: Edge, newConnection: Connection) => setEdges((els) => updateEdge(oldEdge, newConnection, els)),
+    [setEdges]
+  )
+
   return (
     <div className={"w-full h-dynamic-screen"}>
       <ReactFlow
@@ -107,7 +115,9 @@ export default function FlowContainer() {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onEdgeUpdate={onEdgeUpdate}
         onConnect={onConnect}
+        deleteKeyCode={["Delete", "Backspace"]}
       >
         <Controls position={"bottom-right"} color={"white"} />
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />

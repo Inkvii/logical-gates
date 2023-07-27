@@ -13,5 +13,5 @@
 }
 
 .react-flow__edge-path {
-	@apply stroke-rose-500
+	@apply stroke-rose-500 stroke-2
 }
