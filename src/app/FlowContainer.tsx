@@ -10,7 +10,6 @@ import ReactFlow, {
   Node,
   NodeTypes,
   OnConnect,
-  updateEdge,
   useEdgesState,
   useNodesState,
 } from "reactflow"
@@ -18,6 +17,7 @@ import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode
 import OrNode, { OrNodeProps } from "components/node/OrNode"
 import AndNode, { AndNodeProps } from "components/node/AndNode"
 import NotNode, { NotNodeProps } from "components/node/NotNode"
+import { produce } from "immer"
 
 const nodeTypes: NodeTypes = {
   generator: GeneratorNode,
@@ -103,8 +103,29 @@ export default function FlowContainer() {
 
   // gets called after end of edge gets dragged to another source or target
   const onEdgeUpdate = useCallback(
-    (oldEdge: Edge, newConnection: Connection) => setEdges((els) => updateEdge(oldEdge, newConnection, els)),
-    [setEdges]
+    (oldEdge: Edge, connection: Connection) => {
+      if (!connection.source || !connection.target) return
+      const node = nodes.find((n) => n.id === connection.source)
+
+      if (!node) return
+
+      const edge: Edge = {
+        id: `e${connection.source}${connection.sourceHandle}-${connection.target}${connection.targetHandle}`,
+        source: connection.source,
+        sourceHandle: connection.sourceHandle,
+        target: connection.target,
+        targetHandle: connection.targetHandle,
+        animated: node.data.enabled,
+      }
+
+      setEdges((prev) =>
+        produce(prev, (draft) => {
+          const oldIndex = draft.findIndex((edge) => oldEdge.id === edge.id)
+          draft[oldIndex] = edge
+        })
+      )
+    },
+    [nodes, setEdges]
   )
 
   return (
