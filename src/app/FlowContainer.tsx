@@ -8,40 +8,35 @@ import ReactFlow, {
   Controls,
   Edge,
   Node,
-  NodeTypes,
   OnConnect,
   useEdgesState,
   useNodesState,
 } from "reactflow"
-import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode"
-import OrNode, { OrNodeProps } from "components/node/OrNode"
-import AndNode, { AndNodeProps } from "components/node/AndNode"
-import NotNode, { NotNodeProps } from "components/node/NotNode"
+import { GeneratorNodeProps } from "components/node/GeneratorNode"
+import { OrNodeProps } from "components/node/OrNode"
+import { AndNodeProps } from "components/node/AndNode"
+import { NotNodeProps } from "components/node/NotNode"
 import { produce } from "immer"
 import { createEdgeFromConnection } from "util/edgeUtils"
-
-const nodeTypes: NodeTypes = {
-  generator: GeneratorNode,
-  or: OrNode,
-  and: AndNode,
-  not: NotNode,
-}
+import { generateId } from "util/nodeUtils"
+import CreateNodePanel from "components/CreateNodePanel"
+import { nodeTypes } from "components/node/nodeTypes"
 
 const initialNodes: Node[] = [
   {
-    id: "3",
+    id: generateId(),
     position: { x: 100, y: 200 },
     type: "generator",
     data: { name: "A input", enabled: false },
   } satisfies Node<GeneratorNodeProps>,
   {
-    id: "4",
+    id: generateId(),
     position: { x: 100, y: 400 },
     type: "generator",
     data: { name: "B Input", enabled: false },
   } satisfies Node<GeneratorNodeProps>,
   {
-    id: "5",
+    id: generateId(),
     position: { x: 500, y: 300 },
     type: "or",
     data: {
@@ -50,7 +45,7 @@ const initialNodes: Node[] = [
     },
   } satisfies Node<OrNodeProps>,
   {
-    id: "6",
+    id: generateId(),
     position: { x: 500, y: 150 },
     type: "and",
     data: {
@@ -59,7 +54,7 @@ const initialNodes: Node[] = [
     },
   } satisfies Node<AndNodeProps>,
   {
-    id: "7",
+    id: generateId(),
     position: { x: 900, y: 150 },
     type: "not",
     data: {
@@ -69,19 +64,9 @@ const initialNodes: Node[] = [
   } satisfies Node<NotNodeProps>,
 ]
 
-const initialEdges: Edge[] = [
-  {
-    id: "e3a-5a",
-    source: "3",
-    target: "5",
-    sourceHandle: "a",
-    targetHandle: "a",
-  },
-]
-
 export default function FlowContainer() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
+  const [edges, setEdges, onEdgesChange] = useEdgesState([])
 
   const onConnect: OnConnect = useCallback(
     (connection: Connection) => {
@@ -120,6 +105,7 @@ export default function FlowContainer() {
       >
         <Controls position={"bottom-right"} color={"white"} />
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
+        <CreateNodePanel setNodes={setNodes} />
       </ReactFlow>
     </div>
   )
