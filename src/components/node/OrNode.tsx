@@ -20,7 +20,6 @@ export default function OrNode(props: NodeProps<OrNodeProps>) {
 
   useUpdateEnabledState(props.id, isConditionMet)
 
-
   return (
     <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"OR gate"}>
       <HandleWrapper type={"source"} count={1} />

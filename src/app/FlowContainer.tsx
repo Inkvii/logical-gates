@@ -9,6 +9,7 @@ import ReactFlow, {
   Edge,
   Node,
   OnConnect,
+  ReactFlowProvider,
   useEdgesState,
   useNodesState,
 } from "reactflow"
@@ -21,6 +22,7 @@ import { createEdgeFromConnection, isValidConnection } from "util/edgeUtils"
 import { generateId } from "util/nodeUtils"
 import CreateNodePanel from "components/CreateNodePanel"
 import { nodeTypes } from "components/node/nodeTypes"
+import DragAndDropWrapper from "components/DragAndDropWrapper"
 
 const initialNodes: Node[] = [
   {
@@ -102,20 +104,24 @@ export default function FlowContainer() {
 
   return (
     <div className={"w-full h-dynamic-screen"}>
-      <ReactFlow
-        nodeTypes={nodeTypes}
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onEdgeUpdate={onEdgeUpdate}
-        onConnect={onConnect}
-        deleteKeyCode={["Delete", "Backspace"]}
-      >
-        <Controls position={"bottom-right"} color={"white"} />
-        <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
-        <CreateNodePanel setNodes={setNodes} />
-      </ReactFlow>
+      <ReactFlowProvider>
+        <DragAndDropWrapper>
+          <ReactFlow
+            nodeTypes={nodeTypes}
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onEdgeUpdate={onEdgeUpdate}
+            onConnect={onConnect}
+            deleteKeyCode={["Delete", "Backspace"]}
+          >
+            <Controls position={"bottom-right"} color={"white"} />
+            <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
+            <CreateNodePanel setNodes={setNodes} />
+          </ReactFlow>
+        </DragAndDropWrapper>
+      </ReactFlowProvider>
     </div>
   )
 }

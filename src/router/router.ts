@@ -44,7 +44,7 @@ export interface UrlObjectWithPath extends UrlObject {
 export function urlTo<SEARCH_PARAMS, VARIABLES>(
   route: Route<SEARCH_PARAMS, VARIABLES>,
   variables: VARIABLES,
-  searchParams: SEARCH_PARAMS,
+  searchParams: SEARCH_PARAMS
 ): UrlObjectWithPath {
   let pathname = route.path
   Object.entries(variables as object).forEach(([key, value]) => {

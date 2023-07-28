@@ -1,19 +1,18 @@
-
 @tailwind base;
-@import 'reactflow/dist/base.css';
+@import "reactflow/dist/base.css";
 @tailwind components;
 @tailwind utilities;
 
 .react-flow__controls {
-	@apply bg-white rounded
+  @apply bg-white rounded;
 }
 
 .react-flow__attribution {
-	@apply bg-neutral-800
+  @apply bg-neutral-800;
 }
 
 .react-flow__edge-path {
-	@apply stroke-rose-500 stroke-2
+  @apply stroke-rose-500 stroke-2;
 }
 
 /* Use this class to prevent react-flow from dragging the element. Useful for interactive components inside nodes */
@@ -26,20 +25,20 @@
 
 /* width */
 ::-webkit-scrollbar {
-	@apply w-2
+  @apply w-2;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	@apply bg-neutral-900
+  @apply bg-neutral-900;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	@apply bg-neutral-600 rounded-full
+  @apply bg-neutral-600 rounded-full;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	@apply bg-neutral-500
+  @apply bg-neutral-500;
 }

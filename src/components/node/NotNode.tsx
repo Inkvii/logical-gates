@@ -23,7 +23,6 @@ export default function NotNode(props: NodeProps<NotNodeProps>) {
 
   useUpdateEnabledState(props.id, isConditionMet)
 
-
   return (
     <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"Invertor"}>
       <HandleWrapper type={"source"} count={1} />

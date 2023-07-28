@@ -27,7 +27,6 @@ export default function AndNode(props: NodeProps<AndNodeProps>) {
 
   useUpdateEnabledState(props.id, isConditionMet)
 
-
   return (
     <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"AND gate"}>
       <HandleWrapper type={"source"} count={1} />
