@@ -13,7 +13,10 @@ export default function GeneratorNode(props: NodeProps<GeneratorNodeProps>) {
     <NodeWrapper enabled={props.data.enabled} selected={props.selected} nodeId={props.id} name={"Generator"}>
       <div>
         <h2 className={"text-lg"}>{props.data.name}</h2>
-        <button className={"bg-primary-600 text-white px-2 rounded"} onClick={() => handleOnClick(!props.data.enabled)}>
+        <button
+          className={"bg-primary-600 text-white px-2 rounded nodrag"}
+          onClick={() => handleOnClick(!props.data.enabled)}
+        >
           {props.data.enabled ? "On" : "Off"}
         </button>
       </div>

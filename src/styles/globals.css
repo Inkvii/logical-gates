@@ -15,3 +15,11 @@
 .react-flow__edge-path {
 	@apply stroke-rose-500 stroke-2
 }
+
+/* Use this class to prevent react-flow from dragging the element. Useful for interactive components inside nodes */
+.nodrag {
+}
+
+/* Use this class to prevent react-flow from zooming when mouse hovers on this element. Useful for components that need scrollable area */
+.nowheel {
+}
