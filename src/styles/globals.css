@@ -23,3 +23,23 @@
 /* Use this class to prevent react-flow from zooming when mouse hovers on this element. Useful for components that need scrollable area */
 .nowheel {
 }
+
+/* width */
+::-webkit-scrollbar {
+	@apply w-2
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	@apply bg-neutral-900
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply bg-neutral-600 rounded-full
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-neutral-500
+}
