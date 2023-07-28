@@ -43,12 +43,12 @@ export function isValidConnection<NodeData, EdgeData>(
 ): boolean {
   if (!connection.target || !connection.source) return false
 
+  // TODO - moving should be possible if only source handle is changed
   const targetNode = getNode(connection.target)
   const sourceNode = getNode(connection.source)
   if (!targetNode || !sourceNode) throw new Error("Cannot find node id of target or source")
 
   const edges = getConnectedEdges([targetNode, sourceNode], getEdges())
-
   for (let i = 0; i < edges.length; i++) {
     if (getHandleId(edges[i], "target") === getHandleId(connection, "target")) {
       console.log(`Target handle ${edges[i].target}${edges[i].targetHandle} is already occupied`)

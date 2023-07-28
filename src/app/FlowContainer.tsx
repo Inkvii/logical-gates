@@ -79,10 +79,11 @@ export default function FlowContainer() {
   // gets called after end of edge gets dragged to another source or target
   const onEdgeUpdate = useCallback(
     (oldEdge: Edge, connection: Connection) => {
+      // filter out oldEdge so it doesnt conflict with validation conditions
       const canConnect = isValidConnection(
         connection,
         (id: string | null) => nodes.find((n) => n.id === id),
-        () => edges
+        () => edges.filter((e) => e.id !== oldEdge.id)
       )
 
       if (!canConnect) return
