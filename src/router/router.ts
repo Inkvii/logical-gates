@@ -26,7 +26,7 @@ import { format, UrlObject } from "url"
  * </pre>
  * <p>Results in path: "http:localhost:3000/home/123/details/johndoe/edit"</p>
  */
-export type Route<SEARCH_PARAMS = {}, VARIABLES = {}> = {
+export type Route<SEARCH_PARAMS = object, VARIABLES = object> = {
   path: string
 }
 

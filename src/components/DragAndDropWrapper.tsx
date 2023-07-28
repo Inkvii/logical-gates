@@ -9,35 +9,35 @@ export default function DragAndDropWrapper(props: { children: ReactNode }) {
   const reactFlowInstance = useReactFlow()
   const wrapperRef = useRef<HTMLDivElement>(null)
 
-  const [target, dropRef] = useDrop(() => ({
-    accept: DraggableItems.node,
-    drop: (item, monitor) => {
-      console.log(reactFlowInstance ? "Loaded" : "Not yet loaded")
-      if (!reactFlowInstance) return
+  const [target, dropRef] = useDrop(
+    () => ({
+      accept: DraggableItems.node,
+      drop: (item, monitor) => {
+        const bounds = wrapperRef.current?.getBoundingClientRect()
 
-      const bounds = wrapperRef.current?.getBoundingClientRect()
+        if (!bounds) return
 
-      if (!bounds) return
+        const position = reactFlowInstance.project({
+          x: (monitor.getClientOffset()?.x ?? 0) - bounds.left,
+          y: (monitor.getClientOffset()?.y ?? 0) - bounds.top,
+        })
 
-      const position = reactFlowInstance.project({
-        x: (monitor.getClientOffset()?.x ?? 0) - bounds.left,
-        y: (monitor.getClientOffset()?.y ?? 0) - bounds.top,
-      })
-
-      addNode<AndNodeProps>(
-        {
-          type: "and",
-          data: item as AndNodeProps,
-          position: position,
-        },
-        reactFlowInstance.setNodes
-      )
-    },
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
+        addNode<AndNodeProps>(
+          {
+            type: "and",
+            data: item as AndNodeProps,
+            position: position,
+          },
+          reactFlowInstance.setNodes
+        )
+      },
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop(),
+      }),
     }),
-  }))
+    [reactFlowInstance]
+  )
 
   return (
     <div ref={wrapperRef}>
