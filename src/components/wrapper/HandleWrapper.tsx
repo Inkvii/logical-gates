@@ -1,8 +1,8 @@
-import { Connection, getConnectedEdges, Handle, HandleProps, HandleType, Position, useReactFlow } from "reactflow"
+import { Connection, Handle, HandleProps, HandleType, Position, useReactFlow } from "reactflow"
 import { convertDecimalToBase } from "util/baseCalculations"
 import { twMerge } from "tailwind-merge"
 import { CSSProperties, useCallback } from "react"
-import { getHandleId } from "util/edgeUtils"
+import { isValidConnection } from "util/edgeUtils"
 
 export default function HandleWrapper(props: { className?: string; type: HandleType; count: number }) {
   const idGenerator = useCallback((index: number) => {
@@ -24,24 +24,8 @@ function CustomHandle(
   }
 ) {
   const { getNode, getEdges } = useReactFlow()
-  const isValidConnection = useCallback(
-    () => (connection: Connection) => {
-      if (!connection.target || !connection.source) return false
-
-      const targetNode = getNode(connection.target)
-      const sourceNode = getNode(connection.source)
-      if (!targetNode || !sourceNode) throw new Error("Cannot find node id of target or source")
-
-      const edges = getConnectedEdges([targetNode, sourceNode], getEdges())
-
-      for (let i = 0; i < edges.length; i++) {
-        if (getHandleId(edges[i], "target") === getHandleId(connection, "target")) {
-          console.log(`Target handle ${edges[i].target}${edges[i].targetHandle} is already occupied`)
-          return false
-        }
-      }
-      return true
-    },
+  const canConnect = useCallback(
+    (connection: Connection) => isValidConnection(connection, getNode, getEdges),
     [getNode, getEdges]
   )
 
@@ -54,7 +38,7 @@ function CustomHandle(
         "w-3 h-3 rounded-full border",
         props.type === "source" ? "bg-secondary-600 border-secondary-400" : "bg-primary-600 border-primary-400"
       )}
-      isValidConnection={isValidConnection()}
+      isValidConnection={canConnect}
     />
   )
 }

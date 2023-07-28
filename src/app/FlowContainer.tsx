@@ -17,7 +17,7 @@ import { OrNodeProps } from "components/node/OrNode"
 import { AndNodeProps } from "components/node/AndNode"
 import { NotNodeProps } from "components/node/NotNode"
 import { produce } from "immer"
-import { createEdgeFromConnection } from "util/edgeUtils"
+import { createEdgeFromConnection, isValidConnection } from "util/edgeUtils"
 import { generateId } from "util/nodeUtils"
 import CreateNodePanel from "components/CreateNodePanel"
 import { nodeTypes } from "components/node/nodeTypes"
@@ -79,6 +79,14 @@ export default function FlowContainer() {
   // gets called after end of edge gets dragged to another source or target
   const onEdgeUpdate = useCallback(
     (oldEdge: Edge, connection: Connection) => {
+      const canConnect = isValidConnection(
+        connection,
+        (id: string | null) => nodes.find((n) => n.id === id),
+        () => edges
+      )
+
+      if (!canConnect) return
+
       const edge: Edge = createEdgeFromConnection(connection, nodes)
 
       setEdges((prev) =>
@@ -88,7 +96,7 @@ export default function FlowContainer() {
         })
       )
     },
-    [nodes, setEdges]
+    [edges, nodes, setEdges]
   )
 
   return (
