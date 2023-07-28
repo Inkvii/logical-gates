@@ -17,7 +17,7 @@ export default function GeneratorNode(props: NodeProps<GeneratorNodeProps>) {
           {props.data.enabled ? "On" : "Off"}
         </button>
       </div>
-      <HandleWrapper type={"source"} count={1} />
+      <HandleWrapper type={"source"} count={2} />
     </NodeWrapper>
   )
 }

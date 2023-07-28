@@ -1,7 +1,13 @@
-import { Connection, Edge, Node } from "reactflow"
+import { Connection, Edge, HandleType, Node } from "reactflow"
 
 export function createEdgeId(connection: Connection): string {
   return `e${connection.source}${connection.sourceHandle}-${connection.target}${connection.targetHandle}`
+}
+
+export function getHandleId(connection: Connection | Edge, type: HandleType): string {
+  return type === "source"
+    ? `${connection.source}${connection.sourceHandle}`
+    : `${connection.target}${connection.targetHandle}`
 }
 
 /**
