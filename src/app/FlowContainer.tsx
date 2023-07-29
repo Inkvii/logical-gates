@@ -24,6 +24,7 @@ import { generateId } from "util/nodeUtils"
 import CreateNodePanel from "components/CreateNodePanel"
 import { nodeTypes } from "components/node/nodeTypes"
 import DragAndDropWrapper from "components/DragAndDropWrapper"
+import { twMerge } from "tailwind-merge"
 
 const initialNodes: Node[] = [
   {
@@ -125,7 +126,12 @@ export default function FlowContainer() {
             panOnDrag={panOnDrag}
             selectionMode={SelectionMode.Partial}
           >
-            <Controls position={"bottom-right"} color={"white"} />
+            <Controls
+              position={"bottom-right"}
+              className={twMerge(
+                "bg-neutral-800 border-neutral-400 stroke-white fill-white border transform -translate-y-[3px]"
+              )}
+            />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
             <CreateNodePanel setNodes={setNodes} />
           </ReactFlow>

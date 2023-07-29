@@ -3,8 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.react-flow__controls {
-  @apply bg-white rounded;
+.react-flow__controls-button:hover {
+  @apply bg-neutral-600
 }
 
 .react-flow__attribution {
@@ -46,8 +46,3 @@
   @apply bg-neutral-500;
 }
 
-/*@layer base {*/
-/*  input[type="text"] {*/
-/*    @apply max-w-[150px]*/
-/*  }*/
-/*}*/
