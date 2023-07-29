@@ -10,6 +10,7 @@ import ReactFlow, {
   Node,
   OnConnect,
   ReactFlowProvider,
+  SelectionMode,
   useEdgesState,
   useNodesState,
 } from "reactflow"
@@ -66,6 +67,9 @@ const initialNodes: Node[] = [
   } satisfies Node<NotNodeProps>,
 ]
 
+// which mouse buttons will do dragging
+const panOnDrag = [1, 2]
+
 export default function FlowContainer() {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -117,6 +121,9 @@ export default function FlowContainer() {
             onEdgeUpdate={onEdgeUpdate}
             onConnect={onConnect}
             deleteKeyCode={["Delete", "Backspace"]}
+            selectionOnDrag={true}
+            panOnDrag={panOnDrag}
+            selectionMode={SelectionMode.Partial}
           >
             <Controls position={"bottom-right"} color={"white"} />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
