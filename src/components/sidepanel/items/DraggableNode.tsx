@@ -2,8 +2,9 @@ import { useDrag } from "react-dnd"
 import { DraggableItems } from "components/sidepanel/items/draggableItems"
 import { twMerge } from "tailwind-merge"
 import { NodeFactory } from "components/node/nodeTypes"
+import { ReactNode } from "react"
 
-export default function DraggableNode(props: { name: string; itemProperties: NodeFactory }) {
+export default function DraggableNode(props: { itemProperties: NodeFactory; className?: string; children: ReactNode }) {
   const [{ isDragging }, dragRef] = useDrag(() => ({
     type: DraggableItems.node,
     item: props.itemProperties,
@@ -13,8 +14,8 @@ export default function DraggableNode(props: { name: string; itemProperties: Nod
     }),
   }))
   return (
-    <div ref={dragRef} className={twMerge(isDragging && "opacity-60", "border p-4 bg-green-600 text-white")}>
-      Draggable node {props.name}
+    <div ref={dragRef} className={twMerge(isDragging && "opacity-80", props.className)}>
+      {props.children}
     </div>
   )
 }

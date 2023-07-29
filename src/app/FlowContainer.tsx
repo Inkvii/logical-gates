@@ -16,7 +16,7 @@ import ReactFlow, {
 import { GeneratorNodeProps } from "components/node/GeneratorNode"
 import { OrNodeProps } from "components/node/OrNode"
 import { AndNodeProps } from "components/node/AndNode"
-import { NotNodeProps } from "components/node/NotNode"
+import { NotNodeProps } from "components/node/InverterNode"
 import { produce } from "immer"
 import { createEdgeFromConnection, isValidConnection } from "util/edgeUtils"
 import { generateId } from "util/nodeUtils"
@@ -58,7 +58,7 @@ const initialNodes: Node[] = [
   {
     id: generateId(),
     position: { x: 900, y: 150 },
-    type: "not",
+    type: "inverter",
     data: {
       name: "NOT gate",
       enabled: false,

@@ -7,7 +7,7 @@ import { AbstractNodeProps } from "components/node/AbstractNodeProps"
 
 export type NotNodeProps = AbstractNodeProps
 
-export default function NotNode(props: NodeProps<NotNodeProps>) {
+export default function InverterNode(props: NodeProps<NotNodeProps>) {
   const edges = useEdges()
 
   const isConditionMet: boolean = useMemo(() => {
