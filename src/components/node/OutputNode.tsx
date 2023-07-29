@@ -4,6 +4,7 @@ import NodeWrapper from "components/wrapper/NodeWrapper"
 import HandleWrapper from "components/wrapper/HandleWrapper"
 import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
 import { AbstractNodeProps } from "components/node/AbstractNodeProps"
+import NodeDescription from "components/node/fragment/NodeDescription"
 
 export type OutputNodeProps = AbstractNodeProps
 
@@ -22,9 +23,7 @@ export default function OutputNode(props: NodeProps<OutputNodeProps>) {
 
   return (
     <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"Output"}>
-      <div>
-        <h2 className={"text-lg"}>{props.data.name}</h2>
-      </div>
+      <NodeDescription description={props.data.name} />
       <HandleWrapper type={"target"} count={1} />
     </NodeWrapper>
   )

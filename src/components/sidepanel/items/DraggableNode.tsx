@@ -14,7 +14,14 @@ export default function DraggableNode(props: { itemProperties: NodeFactory; clas
     }),
   }))
   return (
-    <div ref={dragRef} className={twMerge(isDragging && "opacity-80", props.className)}>
+    <div
+      ref={dragRef}
+      className={twMerge(
+        isDragging && "opacity-80",
+        "cursor-grab hover:brightness-110 transition-all",
+        props.className
+      )}
+    >
       {props.children}
     </div>
   )

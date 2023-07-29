@@ -45,3 +45,9 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-neutral-500;
 }
+
+/*@layer base {*/
+/*  input[type="text"] {*/
+/*    @apply max-w-[150px]*/
+/*  }*/
+/*}*/

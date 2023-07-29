@@ -16,7 +16,8 @@ export default function SidePanel(props: { className?: string }) {
       )}
     >
       <div className={"p-4"}>
-        <span className={"text-2xl font-semibold"}>My logo</span>
+        <p className={"text-xs"}>v{process.env.NEXT_PUBLIC_APP_VERSION}</p>
+        <span className={"text-2xl font-semibold"}>Logical gates</span>
       </div>
       <div className={"overflow-y-scroll grow p-2 flex flex-col gap-2"}>
         <Generator />

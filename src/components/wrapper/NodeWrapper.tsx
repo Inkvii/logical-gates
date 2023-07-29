@@ -19,7 +19,7 @@ export default function NodeWrapper(props: {
         "backdrop-blur"
       )}
     >
-      <div className={twMerge("bg-gradient-to-br from-neutral-900 to-neutral-800 rounded text-white min-w-[200px]")}>
+      <div className={twMerge("bg-gradient-to-br from-neutral-900 to-neutral-800 rounded text-white w-[200px]")}>
         <div
           className={
             "flex justify-between gap-4 items-center px-2 py-1 bg-gradient-to-b from-neutral-900 to-neutral-800 rounded-t"
