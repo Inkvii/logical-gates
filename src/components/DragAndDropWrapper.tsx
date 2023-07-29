@@ -1,9 +1,9 @@
 import { ReactNode } from "react"
 import { useDrop } from "react-dnd"
-import { DraggableItems } from "components/sidepanel/items/draggableItems"
 import { addNode } from "util/nodeUtils"
 import { useReactFlow } from "reactflow"
-import { NodeFactory } from "components/node/nodeTypes"
+import { DraggableItems } from "components/react-flow/draggableItems"
+import { NodeFactory } from "components/react-flow/nodeTypes"
 
 export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined; children: ReactNode }) {
   const reactFlowInstance = useReactFlow()

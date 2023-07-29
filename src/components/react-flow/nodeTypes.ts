@@ -1,9 +1,9 @@
 import { NodeTypes, XYPosition } from "reactflow"
-import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode"
-import OrNode, { OrNodeProps } from "components/node/OrNode"
-import AndNode, { AndNodeProps } from "components/node/AndNode"
-import InverterNode, { NotNodeProps } from "components/node/InverterNode"
-import OutputNode, { OutputNodeProps } from "components/node/OutputNode"
+import GeneratorNode, { GeneratorNodeProps } from "components/react-flow/node/GeneratorNode"
+import OrNode, { OrNodeProps } from "components/react-flow/node/OrNode"
+import AndNode, { AndNodeProps } from "components/react-flow/node/AndNode"
+import InverterNode, { NotNodeProps } from "components/react-flow/node/InverterNode"
+import OutputNode, { OutputNodeProps } from "components/react-flow/node/OutputNode"
 
 export const nodeTypes: NodeTypes = {
   generator: GeneratorNode,

@@ -1,5 +1,5 @@
 import { Node } from "reactflow"
-import { AbstractNodeProps } from "components/node/AbstractNodeProps"
+import { AbstractNodeProps } from "components/react-flow/AbstractNodeProps"
 import { Dispatch, SetStateAction } from "react"
 
 let index = 0

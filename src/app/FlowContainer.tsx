@@ -14,17 +14,16 @@ import ReactFlow, {
   useEdgesState,
   useNodesState,
 } from "reactflow"
-import { GeneratorNodeProps } from "components/node/GeneratorNode"
-import { OrNodeProps } from "components/node/OrNode"
-import { AndNodeProps } from "components/node/AndNode"
-import { NotNodeProps } from "components/node/InverterNode"
 import { produce } from "immer"
 import { createEdgeFromConnection, isValidConnection } from "util/edgeUtils"
 import { generateId } from "util/nodeUtils"
-import CreateNodePanel from "components/CreateNodePanel"
-import { nodeTypes } from "components/node/nodeTypes"
+import { nodeTypes } from "components/react-flow/nodeTypes"
 import DragAndDropWrapper from "components/DragAndDropWrapper"
 import { twMerge } from "tailwind-merge"
+import { GeneratorNodeProps } from "components/react-flow/node/GeneratorNode"
+import { OrNodeProps } from "components/react-flow/node/OrNode"
+import { AndNodeProps } from "components/react-flow/node/AndNode"
+import { NotNodeProps } from "components/react-flow/node/InverterNode"
 
 const initialNodes: Node[] = [
   {
@@ -133,7 +132,6 @@ export default function FlowContainer() {
               )}
             />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
-            <CreateNodePanel setNodes={setNodes} />
           </ReactFlow>
         </DragAndDropWrapper>
       </ReactFlowProvider>

@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react"
 import { Node, useNodeId, useReactFlow } from "reactflow"
 import { produce } from "immer"
-import { AndNodeProps } from "components/node/AndNode"
+import { AndNodeProps } from "components/react-flow/node/AndNode"
 
 export default function NodeDescription(props: { description: string }) {
   const [isEditMode, setIsEditMode] = useState<boolean>(false)

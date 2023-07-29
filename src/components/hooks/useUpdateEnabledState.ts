@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react"
 import { useReactFlow, useStoreApi } from "reactflow"
 import { produce } from "immer"
-import { AndNodeProps } from "components/node/AndNode"
+import { AndNodeProps } from "components/react-flow/node/AndNode"
 
 /**
  * Hook for updating <code>enabled</code> state based on the condition

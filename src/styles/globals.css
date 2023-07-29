@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .react-flow__controls-button:hover {
-  @apply bg-neutral-600
+	@apply bg-neutral-600;
 }
 
 .react-flow__attribution {
@@ -12,7 +12,7 @@
 }
 
 .react-flow__edge.animated path {
-  @apply stroke-green-600
+	@apply stroke-green-600;
 }
 .react-flow__edge-path {
   @apply stroke-rose-500 stroke-2;
@@ -45,4 +45,3 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-neutral-500;
 }
-

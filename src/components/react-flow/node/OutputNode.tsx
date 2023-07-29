@@ -1,10 +1,10 @@
 import { NodeProps, useEdges } from "reactflow"
 import { useMemo } from "react"
-import NodeWrapper from "components/wrapper/NodeWrapper"
-import HandleWrapper from "components/wrapper/HandleWrapper"
+import NodeWrapper from "components/react-flow/wrapper/NodeWrapper"
+import HandleWrapper from "components/react-flow/wrapper/HandleWrapper"
 import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
-import { AbstractNodeProps } from "components/node/AbstractNodeProps"
-import NodeDescription from "components/node/fragment/NodeDescription"
+import { AbstractNodeProps } from "components/react-flow/AbstractNodeProps"
+import NodeDescription from "components/react-flow/node/fragment/NodeDescription"
 
 export type OutputNodeProps = AbstractNodeProps
 
