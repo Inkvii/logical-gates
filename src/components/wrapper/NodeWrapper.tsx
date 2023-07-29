@@ -12,16 +12,14 @@ export default function NodeWrapper(props: {
     <div
       className={twMerge(
         props.enabled
-          ? "border-green-400 bg-green-400 shadow-green-600"
+          ? "border-green-600 bg-green-600 shadow-green-600"
           : "border-secondary-400 bg-secondary-400 shadow-secondary-600",
         "shadow-md transition-all rounded border ",
         props.selected && "border-primary-400 bg-primary-400 shadow-primary-600",
         "backdrop-blur"
       )}
     >
-      <div
-        className={twMerge("bg-gradient-to-br from-neutral-900 to-neutral-800 rounded border text-white min-w-[200px]")}
-      >
+      <div className={twMerge("bg-gradient-to-br from-neutral-900 to-neutral-800 rounded text-white min-w-[200px]")}>
         <div
           className={
             "flex justify-between gap-4 items-center px-2 py-1 bg-gradient-to-b from-neutral-900 to-neutral-800 rounded-t"
