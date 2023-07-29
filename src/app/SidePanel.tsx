@@ -3,6 +3,7 @@ import Generator from "components/sidepanel/items/Generator"
 import And from "components/sidepanel/items/And"
 import Or from "components/sidepanel/items/Or"
 import Inverter from "components/sidepanel/items/Inverter"
+import OutputResult from "components/sidepanel/items/OutputResult"
 
 export default function SidePanel(props: { className?: string }) {
   return (
@@ -22,6 +23,7 @@ export default function SidePanel(props: { className?: string }) {
         <And />
         <Or />
         <Inverter />
+        <OutputResult />
       </div>
     </aside>
   )

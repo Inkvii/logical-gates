@@ -11,6 +11,9 @@
   @apply bg-neutral-800;
 }
 
+.react-flow__edge.animated path {
+  @apply stroke-green-600
+}
 .react-flow__edge-path {
   @apply stroke-rose-500 stroke-2;
 }

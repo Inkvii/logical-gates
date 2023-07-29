@@ -3,12 +3,14 @@ import GeneratorNode, { GeneratorNodeProps } from "components/node/GeneratorNode
 import OrNode, { OrNodeProps } from "components/node/OrNode"
 import AndNode, { AndNodeProps } from "components/node/AndNode"
 import InverterNode, { NotNodeProps } from "components/node/InverterNode"
+import OutputNode, { OutputNodeProps } from "components/node/OutputNode"
 
 export const nodeTypes: NodeTypes = {
   generator: GeneratorNode,
   or: OrNode,
   and: AndNode,
   inverter: InverterNode,
+  outputResult: OutputNode,
 }
 
 type GeneratorNodeType = {
@@ -31,4 +33,15 @@ type InverterNodeType = {
   data: NotNodeProps
 }
 
-export type NodeFactory = { position?: XYPosition } & (GeneratorNodeType | OrNodeType | AndNodeType | InverterNodeType)
+type OutputNodeType = {
+  type: "outputResult"
+  data: OutputNodeProps
+}
+
+export type NodeFactory = { position?: XYPosition } & (
+  | GeneratorNodeType
+  | OrNodeType
+  | AndNodeType
+  | InverterNodeType
+  | OutputNodeType
+)

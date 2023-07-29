@@ -5,27 +5,23 @@ import HandleWrapper from "components/wrapper/HandleWrapper"
 import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
 import { AbstractNodeProps } from "components/node/AbstractNodeProps"
 
-export type NotNodeProps = AbstractNodeProps
+export type OutputNodeProps = AbstractNodeProps
 
-export default function InverterNode(props: NodeProps<NotNodeProps>) {
+export default function OutputNode(props: NodeProps<OutputNodeProps>) {
   const edges = useEdges()
 
   const isConditionMet: boolean = useMemo(() => {
-    const filtered = edges.filter((edge) => edge.target === props.id)
-
-    return (
-      filtered.length > 0 &&
-      filtered.every((edge) => {
-        return !edge.animated
+    return edges
+      .filter((edge) => edge.target === props.id)
+      .some((edge) => {
+        return edge.animated
       })
-    )
   }, [props.id, edges])
 
   useUpdateEnabledState(props.id, isConditionMet)
 
   return (
-    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"Inverter"}>
-      <HandleWrapper type={"source"} count={1} />
+    <NodeWrapper enabled={isConditionMet} selected={props.selected} nodeId={props.id} name={"Output"}>
       <div>
         <h2 className={"text-lg"}>{props.data.name}</h2>
       </div>
