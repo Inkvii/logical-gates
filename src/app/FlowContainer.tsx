@@ -1,5 +1,5 @@
 "use client"
-import { useCallback } from "react"
+import { useCallback, useRef } from "react"
 import ReactFlow, {
   addEdge,
   Background,
@@ -67,6 +67,8 @@ const initialNodes: Node[] = [
 ]
 
 export default function FlowContainer() {
+  const wrapperRef = useRef<HTMLDivElement>(null)
+
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
 
@@ -103,9 +105,9 @@ export default function FlowContainer() {
   )
 
   return (
-    <div className={"w-full h-dynamic-screen"}>
+    <div className={"w-full h-dynamic-screen"} ref={wrapperRef}>
       <ReactFlowProvider>
-        <DragAndDropWrapper>
+        <DragAndDropWrapper bounds={wrapperRef.current?.getBoundingClientRect()}>
           <ReactFlow
             nodeTypes={nodeTypes}
             nodes={nodes}
