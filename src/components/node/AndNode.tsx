@@ -6,24 +6,24 @@ import useUpdateEnabledState from "components/hooks/useUpdateEnabledState"
 import { AbstractNodeProps } from "components/node/AbstractNodeProps"
 
 export type AndNodeProps = AbstractNodeProps & {
-  targetCount?: number
+  targetHandleCount?: number
 }
 
 export default function AndNode(props: NodeProps<AndNodeProps>) {
   const edges = useEdges()
 
-  const { targetCount = 2 } = props.data
+  const { targetHandleCount = 2 } = props.data
 
   const isConditionMet: boolean = useMemo(() => {
     const filtered = edges.filter((edge) => edge.target === props.id)
 
     return (
-      filtered.length === targetCount &&
+      filtered.length === targetHandleCount &&
       filtered.every((edge) => {
         return edge.animated
       })
     )
-  }, [props.id, edges, targetCount])
+  }, [props.id, edges, targetHandleCount])
 
   useUpdateEnabledState(props.id, isConditionMet)
 
@@ -33,7 +33,7 @@ export default function AndNode(props: NodeProps<AndNodeProps>) {
       <div>
         <h2 className={"text-lg"}>{props.data.name}</h2>
       </div>
-      <HandleWrapper type={"target"} count={targetCount} />
+      <HandleWrapper type={"target"} count={targetHandleCount} />
     </NodeWrapper>
   )
 }

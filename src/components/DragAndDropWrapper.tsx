@@ -2,8 +2,8 @@ import { ReactNode } from "react"
 import { useDrop } from "react-dnd"
 import { DraggableItems } from "components/sidepanel/items/draggableItems"
 import { addNode } from "util/nodeUtils"
-import { AndNodeProps } from "components/node/AndNode"
 import { useReactFlow } from "reactflow"
+import { NodeFactory } from "components/node/nodeTypes"
 
 export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined; children: ReactNode }) {
   const reactFlowInstance = useReactFlow()
@@ -11,17 +11,17 @@ export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined;
   const [target, dropRef] = useDrop(
     () => ({
       accept: DraggableItems.node,
-      drop: (item, monitor) => {
+      drop: (item: NodeFactory, monitor) => {
         const position = reactFlowInstance.project({
           x: (monitor.getClientOffset()?.x ?? 0) - (props.bounds?.left ?? 0),
           y: (monitor.getClientOffset()?.y ?? 0) - (props.bounds?.top ?? 0),
         })
 
-        addNode<AndNodeProps>(
+        addNode(
           {
-            type: "and",
-            data: item as AndNodeProps,
-            position: position,
+            type: item.type,
+            data: item.data,
+            position: item.position ?? position,
           },
           reactFlowInstance.setNodes
         )

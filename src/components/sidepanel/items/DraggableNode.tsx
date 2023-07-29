@@ -1,15 +1,12 @@
 import { useDrag } from "react-dnd"
 import { DraggableItems } from "components/sidepanel/items/draggableItems"
 import { twMerge } from "tailwind-merge"
-import { AndNodeProps } from "components/node/AndNode"
+import { NodeFactory } from "components/node/nodeTypes"
 
-export default function DraggableNode(props: { name: string }) {
+export default function DraggableNode(props: { name: string; itemProperties: NodeFactory }) {
   const [{ isDragging }, dragRef] = useDrag(() => ({
     type: DraggableItems.node,
-    item: {
-      name: props.name,
-      enabled: false,
-    } satisfies AndNodeProps,
+    item: props.itemProperties,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
       handlerId: monitor.getHandlerId(),
