@@ -4,6 +4,9 @@ import And from "components/sidepanel/items/And"
 import Or from "components/sidepanel/items/Or"
 import Inverter from "components/sidepanel/items/Inverter"
 import OutputResult from "components/sidepanel/items/OutputResult"
+import Link from "next/link"
+import { urlTo } from "router/router"
+import Routes from "router/routes"
 
 export default function SidePanel(props: { className?: string }) {
   return (
@@ -17,7 +20,9 @@ export default function SidePanel(props: { className?: string }) {
     >
       <div className={"p-4"}>
         <p className={"text-xs"}>v{process.env.NEXT_PUBLIC_APP_VERSION}</p>
-        <span className={"text-2xl font-semibold"}>Logical gates</span>
+        <Link href={urlTo(Routes.home, {}, {})} className={"text-2xl font-semibold block"}>
+          Logical gates
+        </Link>
       </div>
       <div className={"overflow-y-scroll grow p-2 flex flex-col gap-2"}>
         <Generator />

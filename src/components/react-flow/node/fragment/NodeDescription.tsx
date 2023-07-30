@@ -58,7 +58,7 @@ export default function NodeDescription(props: { description: string }) {
         </form>
       ) : (
         <p
-          className={"text-lg hover:bg-neutral-700 cursor-text transition-all"}
+          className={"hover:bg-neutral-700 cursor-text transition-all"}
           onClick={() => {
             setIsEditMode((prev) => !prev)
           }}

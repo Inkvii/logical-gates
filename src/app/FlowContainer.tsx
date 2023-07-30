@@ -21,9 +21,7 @@ import { nodeTypes } from "components/react-flow/nodeTypes"
 import DragAndDropWrapper from "components/DragAndDropWrapper"
 import { twMerge } from "tailwind-merge"
 import { GeneratorNodeProps } from "components/react-flow/node/GeneratorNode"
-import { OrNodeProps } from "components/react-flow/node/OrNode"
-import { AndNodeProps } from "components/react-flow/node/AndNode"
-import { NotNodeProps } from "components/react-flow/node/InverterNode"
+import { OutputNodeProps } from "components/react-flow/node/OutputNode"
 
 const initialNodes: Node[] = [
   {
@@ -34,37 +32,13 @@ const initialNodes: Node[] = [
   } satisfies Node<GeneratorNodeProps>,
   {
     id: generateId(),
-    position: { x: 100, y: 400 },
-    type: "generator",
-    data: { name: "B Input", enabled: false },
-  } satisfies Node<GeneratorNodeProps>,
-  {
-    id: generateId(),
-    position: { x: 500, y: 300 },
-    type: "or",
+    position: { x: 500, y: 200 },
+    type: "outputResult",
     data: {
-      name: "OR gate",
+      name: "Output",
       enabled: false,
     },
-  } satisfies Node<OrNodeProps>,
-  {
-    id: generateId(),
-    position: { x: 500, y: 150 },
-    type: "and",
-    data: {
-      name: "AND gate",
-      enabled: false,
-    },
-  } satisfies Node<AndNodeProps>,
-  {
-    id: generateId(),
-    position: { x: 900, y: 150 },
-    type: "inverter",
-    data: {
-      name: "NOT gate",
-      enabled: false,
-    },
-  } satisfies Node<NotNodeProps>,
+  } satisfies Node<OutputNodeProps>,
 ]
 
 // which mouse buttons will do dragging
