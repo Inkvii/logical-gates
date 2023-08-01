@@ -21,7 +21,7 @@ export default function SidePanel(props: { className?: string }) {
       <div className={"p-4"}>
         <p className={"text-xs"}>v{process.env.NEXT_PUBLIC_APP_VERSION}</p>
         <Link href={urlTo(Routes.home, {}, {})} className={"text-2xl font-semibold block"}>
-          Logical gates
+          Relegates
         </Link>
       </div>
       <div className={"overflow-y-scroll grow p-2 flex flex-col gap-2"}>

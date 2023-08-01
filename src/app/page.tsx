@@ -12,7 +12,7 @@ export default function Home() {
     <main className={"text-white px-6 flex flex-col gap-4"}>
       <div className={"-mx-6 relative"}>
         <div className={"absolute top-0 left-2 translate-y-1/4 z-10"}>
-          <div className={"flex flex-col gap-4 bg-neutral-800/10 backdrop-blur rounded p-4"}>
+          <div className={"flex flex-col gap-4 bg-neutral-800/10 backdrop-blur rounded p-4 max-w-7xl"}>
             <Headline />
             <ActionButton>Try it out</ActionButton>
           </div>
@@ -32,7 +32,7 @@ function Headline() {
           "text-6xl leading-tight font-semibold bg-gradient-to-r from-primary-200 to-primary-600 bg-clip-text text-transparent"
         }
       >
-        Logic gates
+        Relegates
       </h1>
       <h4>A visualisation tool for connecting logic gate nodes. </h4>
     </div>
