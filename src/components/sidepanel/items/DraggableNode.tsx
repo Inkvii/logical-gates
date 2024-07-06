@@ -1,7 +1,7 @@
 import { useDrag } from "react-dnd"
 import { twMerge } from "tailwind-merge"
 import { NodeFactory } from "components/react-flow/nodeTypes"
-import { ReactNode } from "react"
+import { LegacyRef, ReactNode } from "react"
 import { DraggableItems } from "components/react-flow/draggableItems"
 
 export default function DraggableNode(props: { itemProperties: NodeFactory; className?: string; children: ReactNode }) {
@@ -15,7 +15,7 @@ export default function DraggableNode(props: { itemProperties: NodeFactory; clas
   }))
   return (
     <div
-      ref={dragRef}
+      ref={dragRef as unknown as LegacyRef<HTMLDivElement>}
       className={twMerge(
         isDragging && "opacity-80",
         "cursor-grab hover:brightness-110 transition-all",

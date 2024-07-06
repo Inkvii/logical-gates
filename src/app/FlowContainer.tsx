@@ -29,10 +29,11 @@ const initialNodes: Node[] = [
     position: { x: 100, y: 200 },
     type: "generator",
     data: { name: "A input", enabled: false },
+
   } satisfies Node<GeneratorNodeProps>,
   {
     id: generateId(),
-    position: { x: 500, y: 200 },
+    position: { x: 500, y: 175 },
     type: "outputResult",
     data: {
       name: "Output",
@@ -48,14 +49,16 @@ export default function FlowContainer() {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState([])
+  const [edges, setEdges, onEdgesChange] = useEdgesState([
+    { id: "1a-2a", source: "1", sourceHandle: "b", target: "2" },
+  ])
 
   const onConnect: OnConnect = useCallback(
     (connection: Connection) => {
       const edge: Edge = createEdgeFromConnection(connection, nodes)
       setEdges((prev) => addEdge(edge, prev))
     },
-    [nodes, setEdges]
+    [nodes, setEdges],
   )
 
   // gets called after end of edge gets dragged to another source or target
@@ -65,7 +68,7 @@ export default function FlowContainer() {
       const canConnect = isValidConnection(
         connection,
         (id: string | null) => nodes.find((n) => n.id === id),
-        () => edges.filter((e) => e.id !== oldEdge.id)
+        () => edges.filter((e) => e.id !== oldEdge.id),
       )
 
       if (!canConnect) return
@@ -76,10 +79,10 @@ export default function FlowContainer() {
         produce(prev, (draft) => {
           const oldIndex = draft.findIndex((edge) => oldEdge.id === edge.id)
           draft[oldIndex] = edge
-        })
+        }),
       )
     },
-    [edges, nodes, setEdges]
+    [edges, nodes, setEdges],
   )
 
   return (
@@ -102,7 +105,7 @@ export default function FlowContainer() {
             <Controls
               position={"bottom-right"}
               className={twMerge(
-                "bg-neutral-800 border-neutral-400 stroke-white fill-white border transform -translate-y-[3px]"
+                "bg-neutral-800 border-neutral-400 stroke-white fill-white border transform -translate-y-[3px]",
               )}
             />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />

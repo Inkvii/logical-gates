@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { LegacyRef, ReactNode } from "react"
 import { useDrop } from "react-dnd"
 import { addNode } from "util/nodeUtils"
 import { useReactFlow } from "reactflow"
@@ -12,7 +12,7 @@ export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined;
     () => ({
       accept: DraggableItems.node,
       drop: (item: NodeFactory, monitor) => {
-        const position = reactFlowInstance.project({
+        const position = reactFlowInstance.screenToFlowPosition({
           x: (monitor.getClientOffset()?.x ?? 0) - (props.bounds?.left ?? 0),
           y: (monitor.getClientOffset()?.y ?? 0) - (props.bounds?.top ?? 0),
         })
@@ -35,7 +35,7 @@ export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined;
   )
 
   return (
-    <div ref={dropRef} className={"w-full h-dynamic-screen"} data-testid={"dnd-dropable-area"}>
+    <div ref={dropRef as unknown as LegacyRef<HTMLDivElement>} className={"w-full h-dynamic-screen"} data-testid={"dnd-dropable-area"}>
       {props.children}
     </div>
   )
