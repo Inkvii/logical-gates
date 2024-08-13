@@ -104,8 +104,9 @@ export default function FlowContainer() {
           >
             <Controls
               position={"bottom-right"}
-              className={twMerge(
-                "bg-neutral-800 border-neutral-400 stroke-white fill-white border transform -translate-y-[3px]",
+              className={twMerge("first:[&_:is(button)]:rounded-t-xl rounded-t-xl last:[&_:is(button)]:rounded-b-xl rounded-b-xl",
+                "hover:[&_:is(button)]:bg-neutral-600 hover:[&_:is(button)]:fill-neutral-300",
+                "[&_:is(button)]:bg-neutral-800 border-neutral-400 stroke-neutral-400 fill-neutral-400 border transform -translate-y-[3px]",
               )}
             />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
