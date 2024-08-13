@@ -5,17 +5,42 @@
     "prettier",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     "next/core-web-vitals"
   ],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": [
-      "./tsconfig.json"
-    ]
-  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.{ts,tsx}"
+      ],
+      "excludedFiles": [
+        "./playwright/**"
+      ],
+      "parserOptions": {
+        "project": [
+          "./tsconfig.json"
+        ]
+      }
+    },
+    {
+      "files": [
+        "./playwright/**/*.ts"
+      ],
+      "excludedFiles": [
+        "./playwright/output/**"
+      ],
+      "parserOptions": {
+        "project": [
+          "./playwright/tsconfig.json"
+        ]
+      }
+    }
+  ],
   "rules": {
     "@typescript-eslint/no-inferrable-types": 0,
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/no-children-prop": 0
   },
   "ignorePatterns": [
     "next.config.js",

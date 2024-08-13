@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  app:
+    container_name: frontend
+    image: relegates:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.docker
+    networks:
+      - docker_network
+
+  postgres:
+    image: postgres:alpine
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sa
+      MONGO_INITDB_ROOT_PASSWORD: sa
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    networks:
+      - docker_network
+networks:
+  docker_network:
+    driver: bridge

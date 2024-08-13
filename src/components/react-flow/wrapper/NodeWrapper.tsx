@@ -12,7 +12,7 @@ export default function NodeWrapper(props: {
     <div
       className={twMerge(
         props.enabled
-          ? "border-green-600 bg-green-600 shadow-green-600"
+          ? "border-success-600 bg-success-600 shadow-success-600"
           : "border-secondary-400 bg-secondary-400 shadow-secondary-600",
         "shadow-md transition-all rounded border ",
         props.selected && "border-primary-400 bg-primary-400 shadow-primary-600",

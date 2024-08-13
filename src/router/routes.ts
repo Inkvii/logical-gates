@@ -1,15 +1,10 @@
-import { Route } from "router/router"
+import { PrivateRoutes } from "router/PrivateRoutes"
+import { PublicRoutes } from "router/PublicRoutes"
 
 /**
  * Implementation of the route system
  */
-const routes = {
-  home: {
-    path: "/",
-  },
-  playground: {
-    path: "/playground",
-  },
-} satisfies { [key: string]: Route }
-
-export default routes
+export const Routes = {
+  private: PrivateRoutes,
+  public: PublicRoutes,
+} as const

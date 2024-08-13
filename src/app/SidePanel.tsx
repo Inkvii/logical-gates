@@ -6,7 +6,7 @@ import Inverter from "components/sidepanel/items/Inverter"
 import OutputResult from "components/sidepanel/items/OutputResult"
 import Link from "next/link"
 import { urlTo } from "router/router"
-import Routes from "router/routes"
+import { Routes } from "router/routes"
 
 export default function SidePanel(props: { className?: string }) {
   return (
@@ -20,7 +20,7 @@ export default function SidePanel(props: { className?: string }) {
     >
       <div className={"p-4"}>
         <p className={"text-xs"}>v{process.env.NEXT_PUBLIC_APP_VERSION}</p>
-        <Link href={urlTo(Routes.home, {}, {})} className={"text-2xl font-semibold block"}>
+        <Link href={urlTo(Routes.public.home, {}, {})} className={"text-2xl font-semibold block"}>
           Relegates
         </Link>
       </div>

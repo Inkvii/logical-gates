@@ -1,0 +1,52 @@
+html {
+  font-size: 16px;
+}
+
+:root {
+  --trigger-width: 10rem;
+
+  --hue-50: 0 0 0;
+  --hue-100: 0 0 0;
+  --hue-200: 0 0 0;
+  --hue-300: 0 0 0;
+  --hue-400: 0 0 0;
+  --hue-500: 0 0 0;
+  --hue-600: 0 0 0;
+  --hue-700: 0 0 0;
+  --hue-800: 0 0 0;
+  --hue-900: 0 0 0;
+  --hue-950: 0 0 0;
+}
+
+.react-aria-ModalOverlay {
+  @apply fixed left-0 top-0 w-screen h-screen bg-danger-600/40;
+}
+
+.react-aria-Modal {
+  @apply w-full h-full *:h-full;
+}
+
+.react-aria-Popover {
+  min-width: var(--trigger-width);
+}
+
+.dark {
+  color-scheme: dark;
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-xl bg-neutral-600;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply shadow-inner;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-xl bg-neutral-200;
+}

@@ -1,0 +1,6 @@
+**/node_modules
+!**/deploy-manual/standalone.sh
+**/src/generated
+**/.next
+.env.local
+playwright/output

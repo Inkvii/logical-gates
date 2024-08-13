@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import { urlTo } from "router/router"
-import Routes from "router/routes"
 import ReactFlowShowcase from "app/ReactFlowShowcase"
 import Image from "next/image"
 import { ReactNode } from "react"
+import { Routes } from "router/routes"
 
 export default function Home() {
   return (
@@ -42,7 +42,7 @@ function Headline() {
 function ActionButton(props: { children: ReactNode }) {
   return (
     <Link
-      href={urlTo(Routes.playground, {}, {})}
+      href={urlTo(Routes.private.playground, {}, {})}
       className={"bg-primary-600 text-white rounded px-4 py-2 w-fit block hover:brightness-110"}
     >
       {props.children}
@@ -53,7 +53,7 @@ function ActionButton(props: { children: ReactNode }) {
 function Introduction() {
   return (
     <div className={"space-y-4 block pb-8"}>
-      <div className={"prose dark:prose-invert"}>
+      <div>
         <h2 className={""}>How does it work?</h2>
         <p>
           Use individual node types and their connections to create edge graph. Each graph should start with at least
@@ -67,7 +67,7 @@ function Introduction() {
       <div className={"w-full max-w-[1000px] relative object-cover aspect-[2.43/1]"}>
         <Image src={"/nodeInfo.PNG"} alt={"Node description"} fill={true} />
       </div>
-      <div className={"prose dark:prose-invert"}>
+      <div>
         <h2>What is the purpose?</h2>
         <p>
           Sometimes, creating complicated <code>if</code> statements force people to grab pen and paper and start

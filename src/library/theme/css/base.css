@@ -1,0 +1,142 @@
+@layer base {
+  * {
+    @apply outline-none;
+  }
+
+  body {
+    @apply bg-background dark:bg-background-dark
+    typography-body dark:typography-dark-body;
+  }
+
+  h1 {
+    @apply text-balance break-words text-4xl font-semibold typography-header dark:typography-dark-header;
+  }
+
+  h2 {
+    @apply text-balance break-words text-2xl font-semibold typography-header dark:typography-dark-header;
+  }
+
+  h3 {
+    @apply text-balance break-words text-xl font-semibold typography-header dark:typography-dark-header;
+  }
+
+  h4 {
+    @apply text-balance break-words text-lg font-semibold typography-header dark:typography-dark-header;
+  }
+
+  h5 {
+    @apply text-balance break-words text-base font-semibold typography-header dark:typography-dark-header;
+  }
+
+  hr {
+    @apply typography-caption dark:typography-dark-caption;
+  }
+
+  pre {
+    @apply whitespace-pre-wrap min-w-0 text-sm;
+  }
+}
+
+@layer base {
+  .input {
+    @apply border rounded
+    bg-neutral-50 dark:bg-neutral-800
+    border-neutral-200 dark:border-neutral-600
+    aria-[invalid=true]:border-error dark:aria-[invalid=true]:border-error-dark
+
+    focus:aria-[invalid=true]:outline-error dark:focus:aria-[invalid=true]:outline-error-dark
+    focus:aria-[invalid=true]:border-error dark:focus:aria-[invalid=true]:border-error-dark
+    dark:selection:bg-primary-600;
+  }
+
+  .input--read-modifiers {
+    @apply disabled:bg-neutral-100 dark:disabled:bg-neutral-700
+    disabled:text-primary-900/50 dark:disabled:text-neutral-50/40
+    disabled:cursor-not-allowed
+
+    read-only:bg-neutral-50/40 dark:read-only:bg-neutral-950
+    read-only:text-primary-900/70 dark:read-only:text-neutral-400
+    read-only:focus:border-neutral-400 dark:read-only:focus:border-neutral-400
+    read-only:outline-none
+    read-only:cursor-not-allowed;
+  }
+}
+
+@layer base {
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer base {
+  /* Mapping hue 1:1 to tailwind.config.cjs/theme/colors */
+  .neutral {
+    --hue-50: 99% 0 235;
+    --hue-100: 94% 0.002 235;
+    --hue-200: 86% 0.004 235;
+    --hue-300: 80% 0.004 235;
+    --hue-400: 70% 0.006 235;
+    --hue-500: 60% 0.006 235;
+    --hue-600: 50% 0.006 235;
+    --hue-700: 40% 0.006 235;
+    --hue-800: 30% 0.006 235;
+    --hue-900: 25% 0.006 235;
+    --hue-950: 19.6% 0.006 235;
+  }
+
+  .primary {
+    --hue-50: 95% 0.02 235;
+    --hue-100: 91% 0.04 235;
+    --hue-200: 88% 0.07 235;
+    --hue-300: 84% 0.11 235;
+    --hue-400: 70% 0.15 235;
+    --hue-500: 59% 0.16 235;
+    --hue-600: 55% 0.15 235;
+    --hue-700: 50% 0.12 235;
+    --hue-800: 44% 0.1 235;
+    --hue-900: 37% 0.09 235;
+    --hue-950: 30% 0.06 235;
+  }
+
+  .secondary {
+    --hue-50: 95% 0.02 190;
+    --hue-100: 91% 0.05 190;
+    --hue-200: 88% 0.07 190;
+    --hue-300: 84% 0.11 190;
+    --hue-400: 70% 0.15 190;
+    --hue-500: 59% 0.13 190;
+    --hue-600: 55% 0.1 190;
+    --hue-700: 50% 0.08 190;
+    --hue-800: 44% 0.075 190;
+    --hue-900: 37% 0.06 190;
+    --hue-950: 30% 0.06 190;
+  }
+
+  .danger {
+    --hue-50: 95% 0.0293 13;
+    --hue-100: 91% 0.05 13;
+    --hue-200: 88% 0.07 13;
+    --hue-300: 84% 0.09 13;
+    --hue-400: 70% 0.18 13;
+    --hue-500: 59% 0.23 13;
+    --hue-600: 55% 0.21 13;
+    --hue-700: 50% 0.18 13;
+    --hue-800: 44% 0.14 13;
+    --hue-900: 37% 0.1 13;
+    --hue-950: 30% 0.08 13;
+  }
+
+  .success {
+    --hue-50: 95% 0.02 150;
+    --hue-100: 91% 0.07 150;
+    --hue-200: 88% 0.12 150;
+    --hue-300: 84% 0.14 150;
+    --hue-400: 70% 0.17 150;
+    --hue-500: 59% 0.19 150;
+    --hue-600: 55% 0.15 150;
+    --hue-700: 50% 0.13 150;
+    --hue-800: 44% 0.12 150;
+    --hue-900: 37% 0.09 150;
+    --hue-950: 30% 0.08 150;
+  }
+}
