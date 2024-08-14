@@ -1,6 +1,5 @@
 import NextAuth, { NextAuthOptions, User } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { hashPassword } from "@/library/utils/security"
 import { Permission } from "auth/Permission"
 
 declare module "next-auth/jwt" {
@@ -45,7 +44,7 @@ export const authOptions: NextAuthOptions = {
         // if (user.password !== hashedPassword) return null
 
         // return { ...user, id: user._id.toString() }
-        return {id: credentials.email, name: "First Last", email: credentials.email}
+        return { id: credentials.email, name: "First Last", email: credentials.email }
       },
     }),
   ],
@@ -62,7 +61,6 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-
       session.permissions = []
 
       // Send properties to the client, like an access_token and user id from a provider.

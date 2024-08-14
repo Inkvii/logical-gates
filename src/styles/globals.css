@@ -12,7 +12,7 @@
 }
 
 .react-flow__edge.animated path {
-	@apply stroke-success-600;
+  @apply stroke-success-600;
 }
 .react-flow__edge-path {
   @apply stroke-danger-500 stroke-2;

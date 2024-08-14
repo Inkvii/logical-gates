@@ -13,10 +13,13 @@ export const config = {
 
 export default withAuth((baseReq) => {
   const request = baseReq as RequestWithToken
-  console.log(`> MIDDLEWARE REQUEST`, JSON.stringify({
-    user: request.nextauth.token.email,
-    method: request.method,
-    pathname: request.nextUrl.pathname,
-    search: request.nextUrl.search
-  }))
+  console.log(
+    `> MIDDLEWARE REQUEST`,
+    JSON.stringify({
+      user: request.nextauth.token.email,
+      method: request.method,
+      pathname: request.nextUrl.pathname,
+      search: request.nextUrl.search,
+    }),
+  )
 })

@@ -8,8 +8,7 @@ import FlowContainer from "app/playground/FlowContainer"
 export default function DnDContainer() {
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className={"flex"}>
-
+      <div className={"flex grow"}>
         <SidePanel />
         <FlowContainer />
       </div>

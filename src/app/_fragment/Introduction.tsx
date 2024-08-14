@@ -29,7 +29,9 @@ export default function Introduction() {
         <p>Or there is an idea of logical circuit that needs to be tested out.</p>
         <p>Perhaps as helping tool when introducing people to boolean algebra?</p>
       </div>
-      <ButtonLink variant={"solid"} url={urlTo({ route: Routes.private.playground })}>Go to playground</ButtonLink>
+      <ButtonLink variant={"solid"} url={urlTo({ route: Routes.private.playground })}>
+        Go to playground
+      </ButtonLink>
     </div>
   )
 }

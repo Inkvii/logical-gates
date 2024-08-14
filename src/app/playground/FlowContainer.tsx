@@ -29,7 +29,6 @@ const initialNodes: Node[] = [
     position: { x: 100, y: 200 },
     type: "generator",
     data: { name: "A input", enabled: false },
-
   } satisfies Node<GeneratorNodeProps>,
   {
     id: generateId(),
@@ -49,9 +48,7 @@ export default function FlowContainer() {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState([
-    { id: "1a-2a", source: "1", sourceHandle: "b", target: "2" },
-  ])
+  const [edges, setEdges, onEdgesChange] = useEdgesState([{ id: "1a-2a", source: "1", sourceHandle: "b", target: "2" }])
 
   const onConnect: OnConnect = useCallback(
     (connection: Connection) => {
@@ -79,7 +76,7 @@ export default function FlowContainer() {
         produce(prev, (draft) => {
           const oldIndex = draft.findIndex((edge) => oldEdge.id === edge.id)
           draft[oldIndex] = edge
-        }),
+        })
       )
     },
     [edges, nodes, setEdges],
@@ -88,7 +85,7 @@ export default function FlowContainer() {
   return (
     <ReactFlowProvider>
       <DragAndDropWrapper bounds={wrapperRef.current?.getBoundingClientRect()}>
-        <div className={"h-dynamic-screen-75"} ref={wrapperRef}>
+        <div className={"h-full"} ref={wrapperRef}>
           <ReactFlow
             nodeTypes={nodeTypes}
             nodes={nodes}
@@ -104,7 +101,8 @@ export default function FlowContainer() {
           >
             <Controls
               position={"bottom-right"}
-              className={twMerge("first:[&_:is(button)]:rounded-t-xl rounded-t-xl last:[&_:is(button)]:rounded-b-xl rounded-b-xl",
+              className={twMerge(
+                "first:[&_:is(button)]:rounded-t-xl rounded-t-xl last:[&_:is(button)]:rounded-b-xl rounded-b-xl",
                 "hover:[&_:is(button)]:bg-neutral-600 hover:[&_:is(button)]:fill-neutral-300",
                 "[&_:is(button)]:bg-neutral-800 border-neutral-400 stroke-neutral-400 fill-neutral-400 border transform -translate-y-[3px]",
               )}
