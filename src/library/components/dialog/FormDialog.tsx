@@ -56,14 +56,14 @@ export default function FormDialog<TFieldValues extends FieldValues = FieldValue
             "bg-neutral-50 dark:bg-neutral-900",
             "border-neutral-100 dark:border-neutral-800",
             "shadow-lg shadow-neutral-200 dark:shadow-neutral-950",
-            "p-8"
+            "p-6"
           )}
         >
-          <Dialog.Title asChild={true} className={"px-8"}>
+          <Dialog.Title asChild={true} className={"px-2"}>
             <h2>{props.title}</h2>
           </Dialog.Title>
-          <Dialog.Description className={"px-8 pb-2"}>{props.description}</Dialog.Description>
-          <form onSubmit={onFormSubmit} className={twMerge("flex flex-col gap-2 min-h-[15rem] px-6")}>
+          <Dialog.Description className={"pb-2 px-2"}>{props.description}</Dialog.Description>
+          <form onSubmit={onFormSubmit} className={twMerge("flex flex-col gap-2 min-h-[15rem]")}>
             <div className={"ps-2 pe-4 max-h-[50dvh] overflow-y-auto py-4"}>
               <div className={props.className}>{props.children}</div>
             </div>

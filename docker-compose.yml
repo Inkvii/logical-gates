@@ -16,8 +16,9 @@ services:
     image: postgres:alpine
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: sa
-      MONGO_INITDB_ROOT_PASSWORD: sa
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: relegates
     expose:
       - "5432"
     ports:

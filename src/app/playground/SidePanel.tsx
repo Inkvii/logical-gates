@@ -4,6 +4,7 @@ import And from "components/sidepanel/items/And"
 import Or from "components/sidepanel/items/Or"
 import Inverter from "components/sidepanel/items/Inverter"
 import OutputResult from "components/sidepanel/items/OutputResult"
+import ActionButtons from "app/playground/ActionButtons"
 
 export default function SidePanel(props: { className?: string }) {
   return (
@@ -12,7 +13,7 @@ export default function SidePanel(props: { className?: string }) {
         "flex flex-col",
         "min-w-[300px] w-[300px]",
         "bg-neutral-100 dark:bg-neutral-800",
-        props.className,
+        props.className
       )}
     >
       <div className={"overflow-y-scroll h-0 p-2 flex flex-col flex-auto gap-2"}>
@@ -22,6 +23,7 @@ export default function SidePanel(props: { className?: string }) {
         <Inverter />
         <OutputResult />
       </div>
+      <ActionButtons />
     </aside>
   )
 }

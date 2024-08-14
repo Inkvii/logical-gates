@@ -9,7 +9,6 @@ import ReactFlow, {
   Edge,
   Node,
   OnConnect,
-  ReactFlowProvider,
   SelectionMode,
   useEdgesState,
   useNodesState,
@@ -53,7 +52,7 @@ export default function FlowContainer() {
       const edge: Edge = createEdgeFromConnection(connection, nodes)
       setEdges((prev) => addEdge(edge, prev))
     },
-    [nodes, setEdges],
+    [nodes, setEdges]
   )
 
   // gets called after end of edge gets dragged to another source or target
@@ -63,7 +62,7 @@ export default function FlowContainer() {
       const canConnect = isValidConnection(
         connection,
         (id: string | null) => nodes.find((n) => n.id === id),
-        () => edges.filter((e) => e.id !== oldEdge.id),
+        () => edges.filter((e) => e.id !== oldEdge.id)
       )
 
       if (!canConnect) return
@@ -77,45 +76,43 @@ export default function FlowContainer() {
         })
       )
     },
-    [edges, nodes, setEdges],
+    [edges, nodes, setEdges]
   )
 
   return (
-    <ReactFlowProvider>
-      <DragAndDropWrapper>
-        <div className={"h-full"}>
-          <ReactFlow
-            nodeTypes={nodeTypes}
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onEdgeUpdate={onEdgeUpdate}
-            onConnect={onConnect}
-            deleteKeyCode={["Delete", "Backspace"]}
-            selectionOnDrag={true}
-            panOnDrag={panOnDrag}
-            selectionMode={SelectionMode.Partial}
-          >
-            <Controls
-              position={"bottom-right"}
-              className={twMerge(
-                "first:[&_:is(button)]:rounded-t-xl rounded-t-xl last:[&_:is(button)]:rounded-b-xl rounded-b-xl",
-                "dark:hover:[&_:is(button)]:bg-neutral-600",
-                "dark:hover:[&_:is(button)]:fill-neutral-300",
-                "dark:[&_:is(button)]:bg-neutral-800",
-                "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]",
-              )}
-            />
-            <Background
-              variant={BackgroundVariant.Dots}
-              gap={12}
-              size={1}
-              className={"bg-neutral-50 dark:bg-neutral-800"}
-            />
-          </ReactFlow>
-        </div>
-      </DragAndDropWrapper>
-    </ReactFlowProvider>
+    <DragAndDropWrapper>
+      <div className={"h-full"}>
+        <ReactFlow
+          nodeTypes={nodeTypes}
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onEdgeUpdate={onEdgeUpdate}
+          onConnect={onConnect}
+          deleteKeyCode={["Delete", "Backspace"]}
+          selectionOnDrag={true}
+          panOnDrag={panOnDrag}
+          selectionMode={SelectionMode.Partial}
+        >
+          <Controls
+            position={"bottom-right"}
+            className={twMerge(
+              "first:[&_:is(button)]:rounded-t-xl rounded-t-xl last:[&_:is(button)]:rounded-b-xl rounded-b-xl",
+              "dark:hover:[&_:is(button)]:bg-neutral-600",
+              "dark:hover:[&_:is(button)]:fill-neutral-300",
+              "dark:[&_:is(button)]:bg-neutral-800",
+              "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]"
+            )}
+          />
+          <Background
+            variant={BackgroundVariant.Dots}
+            gap={12}
+            size={1}
+            className={"bg-neutral-50 dark:bg-neutral-800"}
+          />
+        </ReactFlow>
+      </div>
+    </DragAndDropWrapper>
   )
 }
