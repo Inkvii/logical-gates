@@ -74,7 +74,7 @@ export default function FlowContainer() {
         produce(prev, (draft) => {
           const oldIndex = draft.findIndex((edge) => oldEdge.id === edge.id)
           draft[oldIndex] = edge
-        }),
+        })
       )
     },
     [edges, nodes, setEdges],
@@ -107,7 +107,12 @@ export default function FlowContainer() {
                 "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]",
               )}
             />
-            <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-50 dark:bg-neutral-800"} />
+            <Background
+              variant={BackgroundVariant.Dots}
+              gap={12}
+              size={1}
+              className={"bg-neutral-50 dark:bg-neutral-800"}
+            />
           </ReactFlow>
         </div>
       </DragAndDropWrapper>

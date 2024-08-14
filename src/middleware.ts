@@ -8,7 +8,7 @@ type RequestWithToken = Omit<NextRequestWithAuth, "nextauth"> & {
 }
 
 export const config = {
-  matcher: ["/users/:path*"],
+  matcher: ["/users/:path*", "/playground/:path*"],
 }
 
 export default withAuth((baseReq) => {
@@ -20,6 +20,6 @@ export default withAuth((baseReq) => {
       method: request.method,
       pathname: request.nextUrl.pathname,
       search: request.nextUrl.search,
-    }),
+    })
   )
 })

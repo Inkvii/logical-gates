@@ -31,13 +31,15 @@ export default function NavbarLinksContainer(props: Props) {
             description={Routes.private.playground.description}
             href={urlTo({ route: Routes.private.playground })}
           />
-          {placeholders.map((name => <NavbarContent.Category.Item
-            key={name}
-            name={name}
-            description={"Just a placeholder item"}
-            href={urlTo({ route: Routes.public.home })}
-            disabled={true}
-          />))}
+          {placeholders.map((name) => (
+            <NavbarContent.Category.Item
+              key={name}
+              name={name}
+              description={"Just a placeholder item"}
+              href={urlTo({ route: Routes.public.home })}
+              disabled={true}
+            />
+          ))}
         </NavbarContent.Category.Root>
         <NavbarContent.Viewport />
       </NavbarContent.Root>

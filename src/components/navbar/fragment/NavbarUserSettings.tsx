@@ -1,14 +1,14 @@
 "use client"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 import { twMerge } from "tailwind-merge"
-import { Moon, SignOut, User, UserCircle } from "@phosphor-icons/react/dist/ssr"
+import { Moon, SignOut } from "@phosphor-icons/react/dist/ssr"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { Button } from "@/library/button/Button"
 import { urlTo } from "@/library/router/urlTo"
 import { Routes } from "router/routes"
 import IconConstants from "@/library/utils/IconConstants"
-import Link from "next/link"
 import { useFocusRing } from "react-aria"
+import { Gear } from "@phosphor-icons/react"
 
 export type Props = {
   toggleDarkMode: () => Promise<void>
@@ -100,7 +100,7 @@ function TriggerButton(props: { className?: string }) {
       data-focused={isFocused || undefined}
       data-testid={"navbar-user-settings"}
     >
-      <UserCircle className={"w-full h-full"} />
+      <Gear className={"w-full h-full"} />
     </DropdownMenu.Trigger>
   )
 }

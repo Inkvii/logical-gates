@@ -22,7 +22,7 @@ export default function HandleWrapper(props: { className?: string; type: HandleT
 function CustomHandle(
   props: Omit<HandleProps, "position" | "isValidConnection"> & {
     style?: CSSProperties
-  },
+  }
 ) {
   const { getNode, getEdges } = useReactFlow()
   const canConnect = useCallback(

@@ -34,11 +34,7 @@ export default function DragAndDropWrapper(props: { children: ReactNode }) {
   )
 
   return (
-    <div
-      ref={dropRef as unknown as LegacyRef<HTMLDivElement>}
-      className={"w-full"}
-      data-testid={"dnd-dropable-area"}
-    >
+    <div ref={dropRef as unknown as LegacyRef<HTMLDivElement>} className={"w-full"} data-testid={"dnd-dropable-area"}>
       {props.children}
     </div>
   )

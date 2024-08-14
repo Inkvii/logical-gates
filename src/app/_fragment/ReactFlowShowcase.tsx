@@ -9,7 +9,7 @@ export default function ReactFlowShowcase(props: { className?: string }) {
   const [edges] = useEdgesState(initialEdges)
 
   return (
-    <div className={twMerge("w-full h-[400px]", props.className)}>
+    <div className={props.className}>
       <ReactFlow
         nodeTypes={nodeTypes}
         nodes={nodes}
@@ -19,6 +19,8 @@ export default function ReactFlowShowcase(props: { className?: string }) {
         edgesFocusable={false}
         elementsSelectable={false}
         zoomOnScroll={false}
+        preventScrolling={false}
+        maxZoom={1.4}
       >
         <Controls
           position={"bottom-right"}
@@ -30,7 +32,12 @@ export default function ReactFlowShowcase(props: { className?: string }) {
             "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]",
           )}
         />
-        <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-50 dark:bg-neutral-800"} />
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={12}
+          size={1}
+          className={"bg-neutral-50 dark:bg-neutral-800"}
+        />
       </ReactFlow>
     </div>
   )

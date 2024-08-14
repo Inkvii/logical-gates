@@ -2,6 +2,8 @@ import { toggleTheme } from "@/library/server/theme"
 import NavbarLinksContainer from "components/navbar/fragment/NavbarLinksContainer"
 import { twMerge } from "tailwind-merge"
 import NavbarUserSettings from "components/navbar/fragment/NavbarUserSettings"
+import Link from "next/link"
+import { Routes } from "router/routes"
 
 export default function Navbar() {
   return (
@@ -14,7 +16,19 @@ export default function Navbar() {
         "border-b dark:border-hue-700"
       )}
     >
-      <div className={"[grid-area:logo]"}>Relegates</div>
+      <Link
+        href={Routes.public.home.path}
+        className={twMerge(
+          "[grid-area:logo]",
+          "text-3xl leading-tight font-semibold",
+          "bg-gradient-to-r bg-clip-text",
+          "from-primary-600 dark:from-primary-200",
+          "to-primary-900 dark:to-primary-600",
+          "text-transparent dark:text-transparent",
+        )}
+      >
+        Relegates
+      </Link>
       <NavbarLinksContainer className={"[grid-area:navbar]"} />
       <NavbarUserSettings toggleDarkMode={toggleTheme} className={"[grid-area:settings]"} />
     </nav>
