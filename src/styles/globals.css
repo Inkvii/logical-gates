@@ -33,15 +33,15 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-neutral-900;
+  @apply bg-neutral-200 dark:bg-neutral-900;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-neutral-600 rounded-full;
+  @apply bg-neutral-600 dark:bg-neutral-600 rounded-full;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-neutral-500;
+  @apply bg-neutral-500 dark:bg-neutral-500;
 }

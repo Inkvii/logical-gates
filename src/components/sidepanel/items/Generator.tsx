@@ -1,9 +1,11 @@
 import DraggableNode from "components/sidepanel/items/DraggableNode"
-import { twMerge } from "tailwind-merge"
+import useTheme from "components/sidepanel/items/useTheme"
 
 const name = "Generator node"
 
 export default function Generator() {
+  const theme = useTheme()
+
   return (
     <DraggableNode
       itemProperties={{
@@ -13,10 +15,10 @@ export default function Generator() {
           enabled: false,
         },
       }}
-      className={twMerge("border p-4 rounded bg-neutral-900 border-secondary-500 space-y-2")}
+      className={theme.wrapper}
     >
-      <h2 className={"font-semibold"}>{name}</h2>
-      <p className={"text-xs"}>Generates constant signal from all outputs. Can be turned on/off</p>
+      <h2 className={theme.title}>{name}</h2>
+      <p className={theme.text}>Generates constant signal from all outputs. Can be turned on/off</p>
     </DraggableNode>
   )
 }

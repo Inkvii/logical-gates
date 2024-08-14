@@ -1,9 +1,11 @@
 import DraggableNode from "components/sidepanel/items/DraggableNode"
-import { twMerge } from "tailwind-merge"
+import useTheme from "components/sidepanel/items/useTheme"
 
 const name = "Inverter node"
 
 export default function Inverter() {
+  const theme = useTheme()
+
   return (
     <DraggableNode
       itemProperties={{
@@ -13,10 +15,10 @@ export default function Inverter() {
           enabled: false,
         },
       }}
-      className={twMerge("border p-4 rounded bg-neutral-900 border-secondary-500 space-y-2")}
+      className={theme.wrapper}
     >
-      <h2 className={"font-semibold"}>{name}</h2>
-      <p className={"text-xs"}>Output is defined as negation of input</p>
+      <h2 className={theme.title}>{name}</h2>
+      <p className={theme.text}>Output is defined as negation of input</p>
     </DraggableNode>
   )
 }

@@ -37,7 +37,7 @@ export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined;
   return (
     <div
       ref={dropRef as unknown as LegacyRef<HTMLDivElement>}
-      className={"w-full h-dynamic-screen"}
+      className={"w-full"}
       data-testid={"dnd-dropable-area"}
     >
       {props.children}

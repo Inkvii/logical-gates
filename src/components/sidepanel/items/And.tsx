@@ -1,8 +1,10 @@
 import DraggableNode from "components/sidepanel/items/DraggableNode"
-import { twMerge } from "tailwind-merge"
+import useTheme from "components/sidepanel/items/useTheme"
 
 const name = "And node"
 export default function And() {
+  const theme = useTheme()
+
   return (
     <DraggableNode
       itemProperties={{
@@ -12,10 +14,10 @@ export default function And() {
           enabled: false,
         },
       }}
-      className={twMerge("border p-4 rounded bg-neutral-900 border-secondary-500 space-y-2")}
+      className={theme.wrapper}
     >
-      <h2 className={"font-semibold"}>{name}</h2>
-      <p className={"text-xs"}>All inputs must be turned on in order for output to be on</p>
+      <h2 className={theme.title}>{name}</h2>
+      <p className={theme.text}>All inputs must be turned on in order for output to be on</p>
     </DraggableNode>
   )
 }
