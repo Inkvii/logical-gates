@@ -1,6 +1,7 @@
 import NextAuth, { NextAuthOptions, User } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { Permission } from "auth/Permission"
+import { sql } from "server/psql"
 
 declare module "next-auth/jwt" {
   interface JWT {
@@ -10,16 +11,6 @@ declare module "next-auth/jwt" {
 declare module "next-auth" {
   interface Session {
     permissions: Permission[]
-  }
-}
-
-declare module "next-auth/adapters" {
-  interface AdapterUser {
-    version: 1
-    password: string
-    salt: string
-    permissions: Permission[]
-    lastUpdated: Date
   }
 }
 
@@ -34,16 +25,14 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials): Promise<User | null> {
         if (!credentials || !credentials.email || !credentials.password) return null
 
-        // This is where proper authentication begins
-        // const user = await getUserByEmail(credentials.email)
+        const emailExists = await sql`select 1
+                                      from author a
+                                      where a.email = ${credentials.email}`
+        if (!emailExists.length) {
+          await sql`insert into author(email)
+                    values (${credentials.email})`
+        }
 
-        // If user is not found in database, return
-        // if (!user || user.emailVerified === null) return null
-
-        // const hashedPassword = await hashPassword(credentials.password, user.salt)
-        // if (user.password !== hashedPassword) return null
-
-        // return { ...user, id: user._id.toString() }
         return { id: credentials.email, name: "First Last", email: credentials.email }
       },
     }),

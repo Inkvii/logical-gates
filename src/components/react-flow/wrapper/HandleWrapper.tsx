@@ -27,7 +27,7 @@ function CustomHandle(
   const { getNode, getEdges } = useReactFlow()
   const canConnect = useCallback(
     (connection: Connection) => isValidConnection(connection, getNode, getEdges),
-    [getNode, getEdges],
+    [getNode, getEdges]
   )
 
   return (
@@ -39,7 +39,7 @@ function CustomHandle(
         "w-3 h-3 rounded-full border-2",
         props.type === "source" ? "danger" : "success",
         "bg-hue-300 dark:bg-hue-700",
-        "border-hue-400 dark:border-hue-900",
+        "border-hue-400 dark:border-hue-500"
       )}
       isValidConnection={canConnect}
     />

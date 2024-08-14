@@ -1,18 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [
+`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# Copy
-```bash
-npx create-next-app@latest --use-npm -e https://github.com/Inkvii/nextjs-ts-tailwindcss-starter
+# Installation
+
+```shell
+pnpm install
 ```
 
-## Getting Started
+Create `.env.local` and fill missing values in `.env`. If you want to use docker image, create also `env.docker` which will most likely copy
+`env.local` with slight changes if necessary (for proper docker orchestration).
 
-First, run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run postgres image and run all scripts in `./deploy-manual/*.sql` to setup the database.
 
 

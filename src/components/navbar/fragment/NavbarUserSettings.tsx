@@ -51,7 +51,7 @@ export default function NavbarUserSettings(props: Props) {
         >
           <DropdownMenu.Label className={"px-4 py-2"}>
             <h5>Logged as</h5>
-            <p>{session.data.user?.name ?? ""}</p>
+            <p>{session.data.user?.email ?? ""}</p>
           </DropdownMenu.Label>
 
           <DropdownMenu.Item onSelect={() => props.toggleDarkMode()} className={linkTheme}>
