@@ -43,7 +43,6 @@ export function isValidConnection<NodeData, EdgeData>(
 ): boolean {
   if (!connection.target || !connection.source) return false
 
-  // TODO - moving should be possible if only source handle is changed
   const targetNode = getNode(connection.target)
   const sourceNode = getNode(connection.source)
   if (!targetNode || !sourceNode) throw new Error("Cannot find node id of target or source")

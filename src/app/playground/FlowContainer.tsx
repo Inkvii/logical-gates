@@ -1,5 +1,5 @@
 "use client"
-import { useCallback, useRef } from "react"
+import { useCallback } from "react"
 import ReactFlow, {
   addEdge,
   Background,
@@ -28,7 +28,7 @@ const initialNodes: Node[] = [
     id: generateId(),
     position: { x: 100, y: 200 },
     type: "generator",
-    data: { name: "A input", enabled: false },
+    data: { name: "An input", enabled: false },
   } satisfies Node<GeneratorNodeProps>,
   {
     id: generateId(),
@@ -45,8 +45,6 @@ const initialNodes: Node[] = [
 const panOnDrag = [1, 2]
 
 export default function FlowContainer() {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState([{ id: "1a-2a", source: "1", sourceHandle: "b", target: "2" }])
 
@@ -76,7 +74,7 @@ export default function FlowContainer() {
         produce(prev, (draft) => {
           const oldIndex = draft.findIndex((edge) => oldEdge.id === edge.id)
           draft[oldIndex] = edge
-        })
+        }),
       )
     },
     [edges, nodes, setEdges],
@@ -84,8 +82,8 @@ export default function FlowContainer() {
 
   return (
     <ReactFlowProvider>
-      <DragAndDropWrapper bounds={wrapperRef.current?.getBoundingClientRect()}>
-        <div className={"h-full"} ref={wrapperRef}>
+      <DragAndDropWrapper>
+        <div className={"h-full"}>
           <ReactFlow
             nodeTypes={nodeTypes}
             nodes={nodes}

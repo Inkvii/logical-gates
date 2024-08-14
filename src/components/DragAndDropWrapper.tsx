@@ -5,23 +5,22 @@ import { useReactFlow } from "reactflow"
 import { DraggableItems } from "components/react-flow/draggableItems"
 import { NodeFactory } from "components/react-flow/nodeTypes"
 
-export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined; children: ReactNode }) {
+export default function DragAndDropWrapper(props: { children: ReactNode }) {
   const reactFlowInstance = useReactFlow()
 
   const [target, dropRef] = useDrop(
     () => ({
       accept: DraggableItems.node,
       drop: (item: NodeFactory, monitor) => {
-        const position = reactFlowInstance.screenToFlowPosition({
-          x: (monitor.getClientOffset()?.x ?? 0) - (props.bounds?.left ?? 0),
-          y: (monitor.getClientOffset()?.y ?? 0) - (props.bounds?.top ?? 0),
-        })
+        const x = monitor.getClientOffset()?.x ?? 0
+        const y = monitor.getClientOffset()?.y ?? 0
+        const position = reactFlowInstance.screenToFlowPosition({ x, y })
 
         addNode(
           {
             type: item.type,
             data: item.data,
-            position: item.position ?? position,
+            position: position,
           },
           reactFlowInstance.setNodes
         )
@@ -31,7 +30,7 @@ export default function DragAndDropWrapper(props: { bounds: DOMRect | undefined;
         canDrop: monitor.canDrop(),
       }),
     }),
-    [reactFlowInstance, props.bounds]
+    [reactFlowInstance],
   )
 
   return (
