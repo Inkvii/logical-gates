@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react"
 import { Node, useNodeId, useReactFlow } from "reactflow"
 import { produce } from "immer"
 import { AndNodeProps } from "components/react-flow/node/AndNode"
+import { Button } from "@/library/button/Button"
 
 export default function NodeDescription(props: { description: string }) {
   const [isEditMode, setIsEditMode] = useState<boolean>(false)
@@ -41,24 +42,26 @@ export default function NodeDescription(props: { description: string }) {
             }
             ref={inputRef}
             defaultValue={props.description}
-            className={"bg-neutral-800 border border-neutral-700 text-white p-0 w-full"}
+            className={"dark:bg-neutral-800 border dark:border-neutral-700 dark:text-white p-0 w-full"}
           />
           <div className={"grid gap-2 @[100px]:grid-cols-1 @[150px]:grid-cols-2"}>
-            <button type={"submit"} className={"bg-primary-600 text-white px-2 rounded"}>
+            <Button variant={"solid"} type={"submit"} size={"none"} className={"px-2 min-w-full"}>
               Save
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={"outline"}
               type={"button"}
-              className={"border-primary-400 border text-primary-400 px-2 rounded"}
-              onClick={() => setIsEditMode(false)}
+              size={"none"}
+              className={"px-2 min-w-full"}
+              onPress={() => setIsEditMode(false)}
             >
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       ) : (
         <p
-          className={"hover:bg-neutral-700 cursor-text transition-all"}
+          className={"hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-text transition-all"}
           onClick={() => {
             setIsEditMode((prev) => !prev)
           }}

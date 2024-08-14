@@ -103,11 +103,13 @@ export default function FlowContainer() {
               position={"bottom-right"}
               className={twMerge(
                 "first:[&_:is(button)]:rounded-t-xl rounded-t-xl last:[&_:is(button)]:rounded-b-xl rounded-b-xl",
-                "hover:[&_:is(button)]:bg-neutral-600 hover:[&_:is(button)]:fill-neutral-300",
-                "[&_:is(button)]:bg-neutral-800 border-neutral-400 stroke-neutral-400 fill-neutral-400 border transform -translate-y-[3px]",
+                "dark:hover:[&_:is(button)]:bg-neutral-600",
+                "dark:hover:[&_:is(button)]:fill-neutral-300",
+                "dark:[&_:is(button)]:bg-neutral-800",
+                "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]",
               )}
             />
-            <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
+            <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-50 dark:bg-neutral-800"} />
           </ReactFlow>
         </div>
       </DragAndDropWrapper>

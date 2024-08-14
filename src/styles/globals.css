@@ -12,10 +12,10 @@
 }
 
 .react-flow__edge.animated path {
-  @apply stroke-success-600;
+  @apply stroke-success-300 dark:stroke-success-600;
 }
 .react-flow__edge-path {
-  @apply stroke-danger-500 stroke-2;
+  @apply stroke-danger-300 dark:stroke-danger-500 stroke-2;
 }
 
 /* Use this class to prevent react-flow from dragging the element. Useful for interactive components inside nodes */
