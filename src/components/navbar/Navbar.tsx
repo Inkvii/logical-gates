@@ -24,7 +24,7 @@ export default function Navbar() {
           "bg-gradient-to-r bg-clip-text",
           "from-primary-600 dark:from-primary-200",
           "to-primary-900 dark:to-primary-600",
-          "text-transparent dark:text-transparent",
+          "text-transparent dark:text-transparent"
         )}
       >
         Relegates

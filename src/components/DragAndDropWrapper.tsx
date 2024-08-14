@@ -30,7 +30,7 @@ export default function DragAndDropWrapper(props: { children: ReactNode }) {
         canDrop: monitor.canDrop(),
       }),
     }),
-    [reactFlowInstance],
+    [reactFlowInstance]
   )
 
   return (

@@ -14,7 +14,7 @@ export default function NodeWrapper(props: {
         props.enabled ? ["border-success-400 dark:border-success-600"] : ["border-danger-400 dark:border-danger-600"],
         "transition-all rounded border-2 ",
         props.selected && "outline-offset-2 outline-2 outline-primary-500",
-        "overflow-hidden",
+        "overflow-hidden"
       )}
     >
       <div
@@ -22,7 +22,7 @@ export default function NodeWrapper(props: {
           "bg-gradient-to-br w-[200px]",
           "from-neutral-50 dark:from-neutral-900",
           "to-neutral-100 dark:to-neutral-800",
-          "dark:text-white",
+          "dark:text-white"
         )}
       >
         <div
@@ -30,7 +30,7 @@ export default function NodeWrapper(props: {
             "flex justify-between gap-4 items-center px-2 py-1",
             "bg-gradient-to-b",
             "from-neutral-50 dark:from-neutral-900",
-            "to-neutral-100 dark:to-neutral-800",
+            "to-neutral-100 dark:to-neutral-800"
           )}
         >
           <p className={"text-xs"}>ID: {props.nodeId}</p>

@@ -29,7 +29,7 @@ export default function ReactFlowShowcase(props: { className?: string }) {
             "dark:hover:[&_:is(button)]:bg-neutral-600",
             "dark:hover:[&_:is(button)]:fill-neutral-300",
             "dark:[&_:is(button)]:bg-neutral-800",
-            "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]",
+            "dark:border-neutral-400 dark:stroke-neutral-400 dark:fill-neutral-400 border transform -translate-y-[3px]"
           )}
         />
         <Background

@@ -25,17 +25,17 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang={htmlLanguage} className={twMerge(`${customFont.variable} font-sans`, theme === "dark" && "dark")}>
       <body>
-      <LocaleProvider locale={serverLocale}>
-        <SessionProvider session={session}>
-          <ThemeProvider isDarkTheme={theme === "dark"}>
-            <div className={"isolate min-w-[320px] min-h-dvh flex flex-col"}>
-              <Navbar />
-              {children}
-            </div>
-            <Toaster />
-          </ThemeProvider>
-        </SessionProvider>
-      </LocaleProvider>
+        <LocaleProvider locale={serverLocale}>
+          <SessionProvider session={session}>
+            <ThemeProvider isDarkTheme={theme === "dark"}>
+              <div className={"isolate min-w-[320px] min-h-dvh flex flex-col"}>
+                <Navbar />
+                {children}
+              </div>
+              <Toaster />
+            </ThemeProvider>
+          </SessionProvider>
+        </LocaleProvider>
       </body>
     </html>
   )
