@@ -1,17 +1,13 @@
 "use client"
 
-import FlowContainer from "app/FlowContainer"
-import SidePanel from "app/SidePanel"
-import { HTML5Backend } from "react-dnd-html5-backend"
-import { DndProvider } from "react-dnd"
+import DnDContainer from "app/playground/DnDContainer"
 
-export default function Home() {
+export default function PlaygroundPage() {
   return (
-    <DndProvider backend={HTML5Backend}>
-      <main className={"flex h-dynamic-screen"}>
-        <SidePanel />
-        <FlowContainer />
-      </main>
-    </DndProvider>
+
+    <main className={"grow"}>
+      <DnDContainer />
+    </main>
+
   )
 }

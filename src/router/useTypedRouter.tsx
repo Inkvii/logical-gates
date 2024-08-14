@@ -1,5 +1,5 @@
 import { NextRouter, useRouter } from "next/router"
-import { Route } from "router/router"
+import { Route } from "@/library/router/types/Route"
 
 export default function useTypedRouter<SEARCH_PARAMS, VARIABLES>(
   _route: Route<SEARCH_PARAMS, VARIABLES>

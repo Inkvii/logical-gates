@@ -86,9 +86,9 @@ export default function FlowContainer() {
   )
 
   return (
-    <div className={"w-full h-dynamic-screen"} ref={wrapperRef}>
-      <ReactFlowProvider>
-        <DragAndDropWrapper bounds={wrapperRef.current?.getBoundingClientRect()}>
+    <ReactFlowProvider>
+      <DragAndDropWrapper bounds={wrapperRef.current?.getBoundingClientRect()}>
+        <div className={"h-dynamic-screen-75"} ref={wrapperRef}>
           <ReactFlow
             nodeTypes={nodeTypes}
             nodes={nodes}
@@ -111,8 +111,8 @@ export default function FlowContainer() {
             />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} className={"bg-neutral-800"} />
           </ReactFlow>
-        </DragAndDropWrapper>
-      </ReactFlowProvider>
-    </div>
+        </div>
+      </DragAndDropWrapper>
+    </ReactFlowProvider>
   )
 }
