@@ -1,12 +1,21 @@
 import { Route } from "@/library/router/types/Route"
+import { EmptyObject } from "@/library/router/types/EmptyObject"
 
-const playground: Route = {
-  path: "/playground",
-  name: "Playground",
+const user: Route = {
+  path: "/u",
+  name: "User",
   permissions: [],
-  description: "Playground for logic gates",
+  description: "All things associated with user",
+}
+
+const userSchema: Route<EmptyObject, { schema: string }> = {
+  path: "/u/:schema",
+  name: "Logic gate schema",
+  permissions: [],
+  description: "Details of logic gate schema",
 }
 
 export const PrivateRoutes = {
-  playground,
+  user,
+  userSchema,
 } as const

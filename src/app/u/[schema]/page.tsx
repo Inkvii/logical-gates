@@ -1,4 +1,4 @@
-import RelegatesContainer from "app/playground/RelegatesContainer"
+import RelegatesContainer from "app/u/[schema]/RelegatesContainer"
 
 export default function PlaygroundPage() {
   return (

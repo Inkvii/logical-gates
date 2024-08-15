@@ -27,9 +27,9 @@ export default function NavbarLinksContainer(props: Props) {
             href={urlTo({ route: Routes.public.home })}
           />
           <NavbarContent.Category.Item
-            name={Routes.private.playground.name}
-            description={Routes.private.playground.description}
-            href={urlTo({ route: Routes.private.playground })}
+            name={Routes.private.user.name}
+            description={Routes.private.user.description}
+            href={urlTo({ route: Routes.private.user })}
           />
           {placeholders.map((name) => (
             <NavbarContent.Category.Item

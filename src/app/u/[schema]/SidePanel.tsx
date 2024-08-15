@@ -4,7 +4,7 @@ import And from "components/sidepanel/items/And"
 import Or from "components/sidepanel/items/Or"
 import Inverter from "components/sidepanel/items/Inverter"
 import OutputResult from "components/sidepanel/items/OutputResult"
-import ActionButtons from "app/playground/ActionButtons"
+import ActionButtons from "app/u/[schema]/ActionButtons"
 
 export default function SidePanel(props: { className?: string }) {
   return (

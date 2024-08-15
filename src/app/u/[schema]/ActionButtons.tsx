@@ -6,7 +6,7 @@ import FormDialog from "@/library/dialog/FormDialog"
 import { Controller, FormProvider, useForm } from "react-hook-form"
 import { FormField } from "@/library/form/field"
 import { createValueIsRequiredRule } from "@/library/validation/rules"
-import { saveLogicSchema } from "app/playground/action"
+import { saveLogicSchema } from "app/u/[schema]/action"
 
 type FormContext = {
   name: string

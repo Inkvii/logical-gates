@@ -1,5 +1,5 @@
 @layer components {
-  div.custom-dash:before {
+	*.custom-dash:before {
     content: "";
     position: absolute;
     border-style: dashed;
@@ -16,7 +16,7 @@
     border-radius: 60px;
   }
 
-  div.custom-dash {
+	*.custom-dash {
     overflow: hidden;
     position: relative;
     text-align: center;

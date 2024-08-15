@@ -2,9 +2,9 @@
 
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { DndProvider } from "react-dnd"
-import SidePanel from "app/playground/SidePanel"
-import FlowContainer from "app/playground/FlowContainer"
 import { ReactFlowProvider } from "reactflow"
+import SidePanel from "app/u/[schema]/SidePanel"
+import FlowContainer from "app/u/[schema]/FlowContainer"
 
 export default function RelegatesContainer() {
   return (
