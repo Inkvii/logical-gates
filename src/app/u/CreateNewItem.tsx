@@ -11,15 +11,15 @@ export default function CreateNewItem() {
       className={twMerge(
         "success",
         "border border-neutral-200 dark:border-neutral-600 rounded",
-        "bg-hue-100 dark:bg-hue-950",
+        "bg-hue-50 dark:bg-hue-950",
         "border-hue-400 dark:border-hue-800",
         "focusable focus-within:ring hover:ring transition-all"
       )}
     >
       <Link href={urlTo({ route: Routes.private.userSchema, pathParams: { schema: "new" }, queryParams: {} })}>
         <div className={"p-4 flex flex-col items-center justify-center h-full success"}>
-          <Plus size={IconConstants.xl} className={"fill-hue-800 dark:fill-hue-200"} />
-          <p className={"text-hue-800 dark:text-hue-200 font-semibold"}>Create new</p>
+          <Plus size={IconConstants.xl} className={"fill-hue-700 dark:fill-hue-200"} />
+          <p className={"text-hue-700 dark:text-hue-200 font-semibold"}>Create new</p>
         </div>
       </Link>
     </li>

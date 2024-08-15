@@ -9,11 +9,12 @@ create table if not exists relegates.public.author
 
 create table if not exists relegates.public.logic_gate_schema
 (
-    name    varchar primary key,
-    payload json not null,
+    name              varchar not null,
     author  varchar
         constraint fk_author references author (email),
-    updated_timestamp timestamp default now()
+    primary key (name, author),
+    updated_timestamp timestamp default now(),
+    payload           json    not null
 );
 
 commit;

@@ -20,16 +20,16 @@ export default function NavbarLinksContainer(props: Props) {
     <Root className={props.className}>
       <NavbarContent.Root>
         <NavbarContent.Link href={urlTo({ route: Routes.public.home })}>Home</NavbarContent.Link>
-        <NavbarContent.Category.Root name={"Menu"}>
-          <NavbarContent.Category.Item
-            name={Routes.public.home.name}
-            description={Routes.public.home.description}
-            href={urlTo({ route: Routes.public.home })}
-          />
+        <NavbarContent.Category.Root name={"Schemas"}>
           <NavbarContent.Category.Item
             name={Routes.private.user.name}
             description={Routes.private.user.description}
             href={urlTo({ route: Routes.private.user })}
+          />
+          <NavbarContent.Category.Item
+            name={"Create new schema"}
+            description={"Creates blank schema"}
+            href={urlTo({ route: Routes.private.userSchema, pathParams: { schema: "new" } })}
           />
           {placeholders.map((name) => (
             <NavbarContent.Category.Item
@@ -46,4 +46,4 @@ export default function NavbarLinksContainer(props: Props) {
     </Root>
   )
 }
-const placeholders = new Array<string>(10).fill("Hodor").map((name, index) => `${name} ${index}`)
+const placeholders = new Array<string>(4).fill("Hodor").map((name, index) => `${name} ${index}`)
