@@ -2,17 +2,21 @@
 
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { DndProvider } from "react-dnd"
-import { ReactFlowProvider } from "reactflow"
+import { Edge, Node, ReactFlowProvider } from "reactflow"
 import SidePanel from "app/u/[schema]/SidePanel"
 import FlowContainer from "app/u/[schema]/FlowContainer"
 
-export default function RelegatesContainer() {
+export type Props = {
+  nodes: Node[]
+  edges: Edge[]
+}
+export default function RelegatesContainer(props: Props) {
   return (
     <DndProvider backend={HTML5Backend}>
       <ReactFlowProvider>
         <div className={"flex grow"}>
           <SidePanel />
-          <FlowContainer />
+          <FlowContainer nodes={props.nodes} edges={props.edges} />
         </div>
       </ReactFlowProvider>
     </DndProvider>

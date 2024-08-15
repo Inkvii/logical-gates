@@ -18,7 +18,9 @@ export default function ListItem(props: { schema: LogicGateSchema }) {
       <Link
         href={urlTo({ route: Routes.private.userSchema, pathParams: { schema: props.schema.name }, queryParams: {} })}
       >
-        <pre className={"p-4"}>{JSON.stringify(props.schema, null, 2)}</pre>
+        <div className={"p-4"}>
+          <h2>{props.schema.name}</h2>
+        </div>
       </Link>
     </li>
   )

@@ -7,6 +7,7 @@ import { Controller, FormProvider, useForm } from "react-hook-form"
 import { FormField } from "@/library/form/field"
 import { createValueIsRequiredRule } from "@/library/validation/rules"
 import { saveLogicSchema } from "app/u/[schema]/action"
+import { useToast } from "@/library/ui/use-toast"
 
 type FormContext = {
   name: string
@@ -15,6 +16,7 @@ type FormContext = {
 export type Props = {}
 export default function ActionButtons(props: Props) {
   const flow = useReactFlow()
+  const { toast } = useToast()
   const form = useForm<FormContext>({
     defaultValues: {
       name: "",
@@ -33,7 +35,21 @@ export default function ActionButtons(props: Props) {
             </Button>
           }
           onSubmit={async (data: FormContext) => {
-            await saveLogicSchema(data.name, JSON.stringify(flow.getNodes()))
+            try {
+              const payload = {
+                nodes: flow.getNodes(),
+                edges: flow.getEdges(),
+              }
+
+              await saveLogicSchema(data.name, payload)
+              toast({ hue: "primary", title: "Schema saved", description: `Schema ${data.name} successfully saved` })
+            } catch (error) {
+              toast({
+                hue: "danger",
+                title: "Error while saving",
+                description: `Schema ${data.name} could not be saved. Reason: ${error}`,
+              })
+            }
           }}
         >
           <Controller
@@ -41,6 +57,11 @@ export default function ActionButtons(props: Props) {
             name={"name"}
             rules={{
               required: createValueIsRequiredRule(),
+              validate: (value) => {
+                if (value.toLowerCase() === "new") {
+                  return "This is registered word. Please use different one"
+                }
+              },
             }}
             render={({ field, fieldState }) => (
               <FormField.Root>

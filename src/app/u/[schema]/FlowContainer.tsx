@@ -1,5 +1,5 @@
 "use client"
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import ReactFlow, {
   addEdge,
   Background,
@@ -15,37 +15,25 @@ import ReactFlow, {
 } from "reactflow"
 import { produce } from "immer"
 import { createEdgeFromConnection, isValidConnection } from "util/edgeUtils"
-import { generateId } from "util/nodeUtils"
 import { nodeTypes } from "components/react-flow/nodeTypes"
 import DragAndDropWrapper from "components/DragAndDropWrapper"
 import { twMerge } from "tailwind-merge"
-import { GeneratorNodeProps } from "components/react-flow/node/GeneratorNode"
-import { OutputNodeProps } from "components/react-flow/node/OutputNode"
-
-const initialNodes: Node[] = [
-  {
-    id: generateId(),
-    position: { x: 100, y: 200 },
-    type: "generator",
-    data: { name: "An input", enabled: false },
-  } satisfies Node<GeneratorNodeProps>,
-  {
-    id: generateId(),
-    position: { x: 500, y: 175 },
-    type: "outputResult",
-    data: {
-      name: "Output",
-      enabled: false,
-    },
-  } satisfies Node<OutputNodeProps>,
-]
 
 // which mouse buttons will do dragging
 const panOnDrag = [1, 2]
 
-export default function FlowContainer() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState([{ id: "1a-2a", source: "1", sourceHandle: "b", target: "2" }])
+export type Props = {
+  nodes: Node[]
+  edges: Edge[]
+}
+export default function FlowContainer(props: Props) {
+  const [nodes, setNodes, onNodesChange] = useNodesState(props.nodes)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(props.edges)
+
+  useEffect(() => {
+    setNodes(props.nodes)
+    setEdges(props.edges)
+  }, [props, setEdges, setNodes])
 
   const onConnect: OnConnect = useCallback(
     (connection: Connection) => {

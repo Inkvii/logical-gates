@@ -11,7 +11,7 @@ export const nodeTypes: NodeTypes = {
   and: AndNode,
   inverter: InverterNode,
   outputResult: OutputNode,
-}
+} as const
 
 type GeneratorNodeType = {
   type: "generator"

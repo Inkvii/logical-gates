@@ -1,5 +1,4 @@
 import { Connection, Edge, Node } from "reactflow"
-import { generateId } from "util/nodeUtils"
 import { GeneratorNodeProps } from "components/react-flow/node/GeneratorNode"
 import { OrNodeProps } from "components/react-flow/node/OrNode"
 import { AndNodeProps } from "components/react-flow/node/AndNode"
@@ -9,13 +8,13 @@ import { createEdgeId } from "util/edgeUtils"
 
 export const initialNodes: Node[] = [
   {
-    id: generateId(),
+    id: "1",
     position: { x: 50, y: 250 },
     type: "generator",
     data: { name: "Throw a dice", enabled: true },
   } satisfies Node<GeneratorNodeProps>,
   {
-    id: generateId(),
+    id: "2",
     position: { x: 500, y: 50 },
     type: "or",
     data: {
@@ -24,7 +23,7 @@ export const initialNodes: Node[] = [
     },
   } satisfies Node<OrNodeProps>,
   {
-    id: generateId(),
+    id: "3",
     position: { x: 400, y: 200 },
     type: "and",
     data: {
@@ -33,7 +32,7 @@ export const initialNodes: Node[] = [
     },
   } satisfies Node<AndNodeProps>,
   {
-    id: generateId(),
+    id: "4",
     position: { x: 700, y: 200 },
     type: "outputResult",
     data: {
@@ -42,7 +41,7 @@ export const initialNodes: Node[] = [
     },
   } satisfies Node<OutputNodeProps>,
   {
-    id: generateId(),
+    id: "5",
     position: { x: 150, y: 50 },
     type: "inverter",
     data: {

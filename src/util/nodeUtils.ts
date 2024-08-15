@@ -2,24 +2,16 @@ import { Node } from "reactflow"
 import { AbstractNodeProps } from "components/react-flow/AbstractNodeProps"
 import { Dispatch, SetStateAction } from "react"
 
-let index = 0
-
-export function* idGenerator(): Generator<string, never> {
-  while (true) {
-    index++
-    yield "" + index
-  }
-}
-
-export function generateId(): string {
-  return idGenerator().next().value
-}
-
 export function addNode<T extends AbstractNodeProps>(
   node: Omit<Node<T>, "id">,
   setNodes: Dispatch<SetStateAction<Node[]>>
 ) {
-  const finalNode = { ...node, id: generateId() }
+  setNodes((prev) => {
+    // set state for id generator
+    const sortedIndexesDesc = prev.map((node) => parseInt(node.id)).toSorted((a, b) => b - a)
+    const nextIndex = (sortedIndexesDesc[0] ?? 0) + 1
 
-  setNodes((prev) => [...prev, finalNode])
+    const finalNode = { ...node, id: nextIndex.toString() }
+    return [...prev, finalNode]
+  })
 }
