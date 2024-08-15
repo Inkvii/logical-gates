@@ -13,7 +13,7 @@ create table if not exists relegates.public.logic_gate_schema
     payload json not null,
     author  varchar
         constraint fk_author references author (email),
-    updatedTimestamp timestamp without time zone default now() 
+    updated_timestamp timestamp default now()
 );
 
 commit;

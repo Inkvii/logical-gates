@@ -18,7 +18,6 @@ export function formatDatetime(date: string | number | Date | null | undefined):
 }
 
 export function formatStringTimestamp(timestamp: string | number | undefined) {
-  // TODO LVE: VI-175 remove this thing
   if (typeof timestamp === "string") return formatDatetime(parseInt(timestamp))
   if (typeof timestamp === "number") return formatDatetime(timestamp)
 

@@ -13,8 +13,7 @@ type FormContext = {
   name: string
 }
 
-export type Props = {}
-export default function ActionButtons(props: Props) {
+export default function ActionButtons() {
   const flow = useReactFlow()
   const { toast } = useToast()
   const form = useForm<FormContext>({

@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge"
 import Link from "next/link"
 import { urlTo } from "@/library/router/urlTo"
 import { Routes } from "router/routes"
+import { formatDatetime } from "@/library/utils/dateUtils"
 
 export default function ListItem(props: { schema: LogicGateSchema }) {
   return (
@@ -20,6 +21,7 @@ export default function ListItem(props: { schema: LogicGateSchema }) {
       >
         <div className={"p-4"}>
           <h2>{props.schema.name}</h2>
+          <p>{formatDatetime(props.schema.updatedTimestamp)}</p>
         </div>
       </Link>
     </li>

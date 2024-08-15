@@ -13,9 +13,10 @@ export default async function UserPage(props: Props) {
   if (!session?.user?.email) throw new Error("Missing user session")
 
   const logicGateSchemas = await sql<LogicGateSchema[]>`
-      select *
+      select name, updated_timestamp as "updatedTimestamp"
       from logic_gate_schema lgs
-      where author = ${session.user.email}`
+      where author = ${session.user.email}
+      order by 2 desc`
 
   return (
     <main className={"p-page-default"}>

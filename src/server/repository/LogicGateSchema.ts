@@ -9,5 +9,5 @@ export type LogicGateSchema = {
   name: string
   payload: LogicGatePayload
   author: string
-  updatedTimestamp: number
+  updatedTimestamp: Date
 }

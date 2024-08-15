@@ -13,8 +13,9 @@ export async function saveLogicSchema(name: string, payload: { nodes: Node[]; ed
 
   if (!session?.user?.email) throw new Error("Invalid session email")
 
-  const result = await sql`insert into logic_gate_schema(author, name, payload, updatedtimestamp)
+  const result = await sql`insert into logic_gate_schema(author, name, payload, updated_timestamp)
                            values (${session.user.email}, ${name}, ${JSON.parse(JSON.stringify(payload))}, ${Date.now()})
-                           on conflict(name) do update set payload = ${JSON.parse(JSON.stringify(payload))}`
+                           on conflict(name) do update set payload           = ${JSON.parse(JSON.stringify(payload))},
+                                                           updated_timestamp = ${Date.now()}`
   console.log(result)
 }
