@@ -5,7 +5,7 @@ import { Routes } from "router/routes"
 import { urlTo } from "@/library/router/urlTo"
 import { LogicGateSchema } from "server/repository/LogicGateSchema"
 import { ExtractRouteParams } from "@/library/router/types/ExtractRouteParams"
-import LogicGateSchemaList from "app/u/LogicGateSchemaList"
+import LogicGateSchemaGrid from "app/u/LogicGateSchemaGrid"
 
 export type Props = ExtractRouteParams<typeof Routes.private.user>
 export default async function UserPage(props: Props) {
@@ -24,8 +24,10 @@ export default async function UserPage(props: Props) {
         breadcrumbs={[{ name: Routes.public.home.name, path: urlTo({ route: Routes.public.home }).path }]}
         name={`User ${session.user.email}`}
       />
-
-      <LogicGateSchemaList schemas={logicGateSchemas} />
+      <div className={"space-y-2"}>
+        <p>Select logic gate schema from the grid below or create new schema.</p>
+        <LogicGateSchemaGrid schemas={logicGateSchemas} />
+      </div>
     </main>
   )
 }

@@ -20,12 +20,13 @@ const restrictedSchemaNames = ["new"]
 
 export default function ActionButtons() {
   const params = useParams<ExtractRouteParamsOnly<typeof Routes.private.userSchema>>()
+  const schema = decodeURIComponent(params.schema)
 
   const flow = useReactFlow()
   const { toast } = useToast()
   const form = useForm<FormContext>({
     defaultValues: {
-      name: restrictedSchemaNames.includes(params.schema) ? "" : params.schema,
+      name: restrictedSchemaNames.includes(schema) ? "" : schema,
     },
     mode: "onBlur",
   })
