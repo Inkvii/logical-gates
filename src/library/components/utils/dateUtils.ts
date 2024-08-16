@@ -34,6 +34,7 @@ export function parseDateFieldValue(value: string | undefined) {
   try {
     return parseAbsoluteToLocal(new Date(parseInt(value)).toISOString())
   } catch (err) {
+    console.error(err)
     return parseAbsoluteToLocal(new Date().toISOString())
   }
 }

@@ -3,6 +3,9 @@ import "server-only"
 import { sql } from "server/psql"
 import getServerSession from "auth/getServerSession"
 import { Edge, Node } from "reactflow"
+import { revalidatePath } from "next/cache"
+import { Routes } from "router/routes"
+import { urlTo } from "@/library/router/urlTo"
 
 export async function saveLogicSchema(name: string, payload: { nodes: Node[]; edges: Edge[] }): Promise<void> {
   console.log(`Saving schema with name ${name}`)
@@ -18,4 +21,6 @@ export async function saveLogicSchema(name: string, payload: { nodes: Node[]; ed
             on conflict(author, name) do update
                 set payload           = ${JSON.parse(JSON.stringify(payload))},
                     updated_timestamp = ${Date.now()}`
+
+  revalidatePath(urlTo({ route: Routes.private.userSchema, pathParams: { schema: name } }).path)
 }

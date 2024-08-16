@@ -7,7 +7,7 @@ COPY . /app
 WORKDIR /app
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm run build:all
+RUN pnpm run build:all
 
 FROM public.ecr.aws/docker/library/node:20-slim AS runner
 COPY --from=build /app/.next/standalone /app

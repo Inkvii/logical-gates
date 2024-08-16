@@ -8,7 +8,8 @@ import { NodeFactory } from "components/react-flow/nodeTypes"
 export default function DragAndDropWrapper(props: { children: ReactNode }) {
   const reactFlowInstance = useReactFlow()
 
-  const [target, dropRef] = useDrop(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, dropRef] = useDrop(
     () => ({
       accept: DraggableItems.node,
       drop: (item: NodeFactory, monitor) => {

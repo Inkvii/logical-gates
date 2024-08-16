@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env TZ=utc next dev --turbo",
-    "build": "next build && bash deploy-manual/standalone.sh",
+    "build:all": "next build && bash deploy-manual/standalone.sh",
     "start:localhost": "bash deploy-manual/standalone-copy-env.sh .env.local && node ./.next/standalone/server.js",
     "lint": "next lint",
     "test": "jest ",

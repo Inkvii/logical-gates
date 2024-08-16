@@ -4,11 +4,9 @@ import Header from "@/library/header/Header"
 import { Routes } from "router/routes"
 import { urlTo } from "@/library/router/urlTo"
 import { LogicGateSchema } from "server/repository/LogicGateSchema"
-import { ExtractRouteParams } from "@/library/router/types/ExtractRouteParams"
 import LogicGateSchemaGrid from "app/u/LogicGateSchemaGrid"
 
-export type Props = ExtractRouteParams<typeof Routes.private.user>
-export default async function UserPage(props: Props) {
+export default async function UserPage() {
   const session = await getServerSession()
   if (!session?.user?.email) throw new Error("Missing user session")
 

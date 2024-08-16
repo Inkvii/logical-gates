@@ -40,7 +40,7 @@ export default function useUpdateEnabledState(
         })
       )
     },
-    [isConditionMet]
+    [flow, nodeId, store]
   )
 
   useEffect(() => {
