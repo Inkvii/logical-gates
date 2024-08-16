@@ -8,17 +8,24 @@ import { FormField } from "@/library/form/field"
 import { createValueIsRequiredRule } from "@/library/validation/rules"
 import { saveLogicSchema } from "app/u/[schema]/action"
 import { useToast } from "@/library/ui/use-toast"
+import { Routes } from "router/routes"
+import { useParams } from "next/navigation"
+import { ExtractRouteParamsOnly } from "@/library/router/types/ExtractRouteParams"
 
 type FormContext = {
   name: string
 }
 
+const restrictedSchemaNames = ["new"]
+
 export default function ActionButtons() {
+  const params = useParams<ExtractRouteParamsOnly<typeof Routes.private.userSchema>>()
+
   const flow = useReactFlow()
   const { toast } = useToast()
   const form = useForm<FormContext>({
     defaultValues: {
-      name: "",
+      name: restrictedSchemaNames.includes(params.schema) ? "" : params.schema,
     },
     mode: "onBlur",
   })
@@ -57,7 +64,7 @@ export default function ActionButtons() {
             rules={{
               required: createValueIsRequiredRule(),
               validate: (value) => {
-                if (value.toLowerCase() === "new") {
+                if (restrictedSchemaNames.includes(value.toLowerCase())) {
                   return "This is registered word. Please use different one"
                 }
               },
