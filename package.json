@@ -1,13 +1,13 @@
 {
   "name": "relegates",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "cross-env TZ=utc next dev --turbo",
     "build:all": "next build && bash deploy-manual/standalone.sh",
     "start:localhost": "bash deploy-manual/standalone-copy-env.sh .env.local && node ./.next/standalone/server.js",
     "lint": "next lint",
-    "test": "jest ",
+    "test": "jest ./src",
     "prettier": "prettier --cache --write ./src ./playwright/**/*.ts",
     "analyze": "cross-env ANALYZE=true next build",
     "playwright:show": "pnpm exec playwright show-report playwright/output/htmlreport",
