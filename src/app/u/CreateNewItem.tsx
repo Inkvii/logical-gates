@@ -15,6 +15,7 @@ export default function CreateNewItem() {
         "border-hue-400 dark:border-hue-800",
         "focusable focus-within:ring hover:ring transition-all"
       )}
+      data-testid={"new-item"}
     >
       <Link href={urlTo({ route: Routes.private.userSchema, pathParams: { schema: "new" }, queryParams: {} })}>
         <div className={"p-4 flex flex-col items-center justify-center h-full success"}>

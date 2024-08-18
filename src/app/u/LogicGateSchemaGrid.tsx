@@ -7,7 +7,7 @@ export type Props = {
 }
 export default function LogicGateSchemaGrid(props: Props) {
   return (
-    <ul className={"grid grid-fill-15 gap-4"}>
+    <ul className={"grid grid-fill-15 gap-4"} data-testid={"schema-items-list"}>
       <CreateNewItem />
       {props.schemas.map((schema) => (
         <ListItem schema={schema} key={schema.name} />

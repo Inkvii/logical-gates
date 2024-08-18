@@ -16,7 +16,7 @@ export default function SidePanel(props: { className?: string }) {
         props.className
       )}
     >
-      <div className={"overflow-y-scroll h-0 p-2 flex flex-col flex-auto gap-2"}>
+      <div className={"overflow-y-scroll h-0 p-2 flex flex-col flex-auto gap-2"} data-testid={"node-types-list"}>
         <Generator />
         <And />
         <Or />

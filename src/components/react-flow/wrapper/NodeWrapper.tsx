@@ -11,7 +11,8 @@ export default function NodeWrapper(props: {
   return (
     <div
       className={twMerge(
-        props.enabled ? ["border-success-400 dark:border-success-600"] : ["border-danger-400 dark:border-danger-600"],
+        props.enabled ? "success" : "danger",
+        "border-hue-400 dark:border-hue-600",
         "transition-all rounded border-2 ",
         props.selected && "outline-offset-2 outline-2 outline-primary-500",
         "overflow-hidden"

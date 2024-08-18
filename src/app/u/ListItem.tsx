@@ -23,6 +23,7 @@ export default function ListItem(props: { schema: LogicGateSchema }) {
         "focusable focus-within:ring hover:ring transition-all",
         "relative"
       )}
+      data-testid={"existing-item"}
     >
       <Link
         href={urlTo({ route: Routes.private.userSchema, pathParams: { schema: props.schema.name }, queryParams: {} })}
